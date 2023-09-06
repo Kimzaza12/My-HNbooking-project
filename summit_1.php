@@ -22,6 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
 
+    
 
 </head>
 
@@ -68,7 +69,7 @@
                         </div>
 
                         <div class="allform_label">
-                        <form action="#" method="post" onsubmit="return validateForm()">
+                        <form action="db_submit.php" method="post" onsubmit="return validateForm()">
 
                             <div class="label_form">
                                 <label for="current_datetime">วันและเวลาปัจจุบัน :</label>
@@ -132,7 +133,6 @@
                         </form>
 
 
-
                                 
                         </div>
 
@@ -154,6 +154,7 @@
           
 
     <script src="Js/script3.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             
 </body>
 </html>

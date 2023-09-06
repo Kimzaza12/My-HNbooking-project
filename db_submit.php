@@ -31,6 +31,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $P_number = $_POST["P_number"];
     $Email = $_POST["Email"];
 
+
+
+        // รับค่า HN จากฟอร์ม
+        $hn = $_POST['HN'];
+
+        // คำสั่ง SQL เพื่อตรวจสอบการจอง
+        $sql = "SELECT * FROM book WHERE HN = '$hn'";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // ถ้ามีการจองห้องพักอยู่แล้ว
+            $message = "HN $hn ได้ทำการจองห้องพักอยู่แล้ว กรุณายกเลิกแล้วทำการจองใหม่อีกครั้ง";
+            echo "<script>alert('".$message."')</script>";
+            echo "<script>window.location.href='summit_1.php'</script>";
+        } else {
+
         // เตรียมคำสั่ง SQL เพื่อเพิ่มข้อมูล
         $sql = "INSERT INTO book (current_datetime, appointment_date, HN, ID_number, S_name, booked_by, Department, P_number, Email)
                 VALUES ('$current_datetime', '$appointment_date', '$HN', '$ID_number', '$S_name', '$booked_by', '$Department', '$P_number', '$Email')";
@@ -41,12 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "เกิดข้อผิดพลาดในการบันทึกข้อมูล: " . $conn->error;
         }
-    
-    
 
-  
-    
-    
+        }
     
     // ปิดการเชื่อมต่อฐานข้อมูล
     $conn->close();
