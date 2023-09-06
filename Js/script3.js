@@ -14,19 +14,22 @@ function autoTab(input, nextField, prevField) {
 
 
 function validateForm() {
+  var appointment_date = document.getElementById("appointment_date").value;  
   var HN = document.getElementById("HN").value;
   var ID_number = document.getElementById("ID_number").value;
   var S_name = document.getElementById("S_name").value;
+  var booked_by = document.getElementById("booked_by").value;
   var Department = document.getElementById("Department").value;
   var P_number = document.getElementById("P_number").value;
   var Email = document.getElementById("Email").value;
 
   // ตรวจสอบว่าทุกช่องถูกกรอกหรือไม่
-  if (HN === "" || ID_number === "" || S_name === "" || Department === "" || P_number === "" || Email === "") {
+  if ( appointment_date === "" || HN === "" || ID_number === "" || S_name === "" || booked_by ==="" || Department === "" || P_number === "" || Email === "" ) {
     alert("กรุณากรอกข้อมูลให้ครบทุกช่อง");
     return false; // ยกเลิกการ submit ฟอร์ม
   }
-  
+
+ 
   alert("ลงทะเบียนสำเร็จ"); // แจ้งเตือนลงทะเบียนสำเร็จ
   
   // เปลี่ยนเส้นทางไปยังหน้า main.php

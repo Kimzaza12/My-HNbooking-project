@@ -77,13 +77,15 @@
             
                             <div class="label_form">
                                 <label for="appointment_date">วันที่นัดแพทย์ :</label>
-                                <input type="date" id="appointment_date" name="appointment_date"><br><br>
+                                <input type="date" id="appointment_date" name="appointment_date" required> <br><br>
                             </div>
 
 
                             <div class="label_form">
                                 <label for="HN">รหัส HN ผู้เข้าพัก :</label>
-                                <input type="text" id="HN" name="HN" maxlength="10" onkeyup="searchHN()" placeholder="กรุณาใส่รหัส HN ที่ไม่เกิน 10 หลัก" oninput="this.value = this.value.replace(/[^0-9]/g, '')"><br><br>
+                                <input type="text" id="HN" name="HN" maxlength="10" onkeyup="searchHN()" placeholder="กรุณาใส่รหัส HN ที่ไม่เกิน 10 หลัก" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                <span id="hn_error" style="color: red;"></span>
+                                <br><br>
                             </div>
 
 

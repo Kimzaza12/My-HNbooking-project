@@ -31,33 +31,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $P_number = $_POST["P_number"];
     $Email = $_POST["Email"];
 
-    // เตรียมคำสั่ง SQL เพื่อเพิ่มข้อมูล
-    $sql = "INSERT INTO book (current_datetime, appointment_date, HN, ID_number, S_name, booked_by, Department, P_number, Email)
-            VALUES ('$current_datetime', '$appointment_date', '$HN', '$ID_number', '$S_name', '$booked_by', '$Department', '$P_number', '$Email')";
+        // เตรียมคำสั่ง SQL เพื่อเพิ่มข้อมูล
+        $sql = "INSERT INTO book (current_datetime, appointment_date, HN, ID_number, S_name, booked_by, Department, P_number, Email)
+                VALUES ('$current_datetime', '$appointment_date', '$HN', '$ID_number', '$S_name', '$booked_by', '$Department', '$P_number', '$Email')";
 
-    if ($conn->query($sql) === TRUE) {
-        header("Location: confirm.php"); // เปลี่ยนทิศทางไปยัง confirm.php
-        exit(); 
-    } else {
-        echo "เกิดข้อผิดพลาดในการบันทึกข้อมูล: " . $conn->error;
-    }
+        if ($conn->query($sql) === TRUE) {
+            header("Location: confirm.php"); // เปลี่ยนทิศทางไปยัง confirm.php
+            exit(); 
+        } else {
+            echo "เกิดข้อผิดพลาดในการบันทึกข้อมูล: " . $conn->error;
+        }
     
-                   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
+
+  
     
     
     
