@@ -43,7 +43,7 @@
                             <a href="main.php">หน้าหลัก</a>
                             <a href="register.php">ลงทะเบียน</a>
                             <a href="booking.php">จองห้องพัก</a>
-                            <a href="booking.php">ยกเลิกห้องพัก</a>
+                            <a href="cancel.php">ยกเลิกห้องพัก</a>
                             <a href="check.php">ตรวจสอบการจอง</a>
                             <a href="contact.php">ติดต่อสอบถาม</a>
                     </div>
