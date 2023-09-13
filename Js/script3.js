@@ -38,7 +38,15 @@ function validateForm() {
   return true; // ยอมรับการ submit ฟอร์ม
 }
 
+function validateAppointmentDate() {
+    var currentDate = new Date(); // วันและเวลาปัจจุบัน
+    var appointmentDate = new Date(document.getElementById("appointment_date").value);
 
+    if (appointmentDate < currentDate) {
+        alert("ไม่สามารถเลือกวันที่ผ่านมาแล้วได้");
+        document.getElementById("appointment_date").value = ""; // ลบค่าที่ผู้ใช้เลือก
+    }
+}
 
 
 

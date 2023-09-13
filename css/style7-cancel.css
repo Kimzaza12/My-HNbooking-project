@@ -229,3 +229,7 @@ head{
     align-items: center;
     margin-top: 20px;
 }
+
+input[type="date"][readonly] {
+    background-color: #ccc; /* สีเทาสำหรับวันที่ที่ผ่านมา */
+}

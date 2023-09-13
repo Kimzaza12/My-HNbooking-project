@@ -65,31 +65,29 @@
                         <div class="allform_label">
                                 <form action="#" method="post" onsubmit="return validateForm()">
 
+                                        <div class="label_form">
+                                            <label for="HN">รหัส HN ผู้เข้าพัก :</label>
+                                            <input type="text" id="HN" name="HN" maxlength="10" onkeyup="searchHN()" placeholder="กรุณาใส่รหัส HN ที่ไม่เกิน 10 หลัก" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                            <span id="hn_error" style="color: red;"></span>
+                                            <br><br>
+                                        </div>
 
-                                                    <div class="label_form">
-                                                        <label for="HN">รหัส HN ผู้เข้าพัก :</label>
-                                                        <input type="text" id="HN" name="HN" maxlength="10" placeholder="กรุณาใส่รหัส HN ที่ไม่เกิน 10 หลัก" oninput="this.value = this.value.replace(/[^0-9]/g, '')"><br><br>
-                                                    </div>
 
                                         
+                                        <div class="label_form">
+                                            <label for="P_number">เบอร์โทรศัพท์ ผู้จอง :</label>
+                                            <input type="tel" id="P_number" name="P_number" placeholder="กรุณาใส่เบอร์โทรศัพท์" oninput="this.value = this.value.replace(/[^0-9]/g, '')" ><br><br>
+                                        </div>
 
 
-                                                    <div class="label_form">
-                                                        <label for="P_number">เบอร์โทรศัพท์ :</label>
-                                                        <input type="tel" id="P_number" name="P_number" placeholder="กรุณาใส่เบอร์โทรศัพท์" oninput="this.value = this.value.replace(/[^0-9]/g, '')" ><br><br>
-                                                    </div>
+                                        <div class="btsubmit">
+                                            <input type="submit" value="ยืนยัน">
+                                            <a href="main.php" class="cancel">
+                                                <p>กลับหน้าหลัก</p>
+                                            </a>
+                                            
 
-
-
-                                                    <div class="btsubmit">
-                                                        <input type="submit" value="ยกเลิกห้องพัก">
-                                                        <a href="main.php" class="cancel">
-                                                            <p>กลับหน้าหลัก</p>
-                                                        </a>
-                                                        
-
-                                                    </div>
-
+                                        </div>
 
                                 </form>
 
@@ -116,7 +114,7 @@
 
 
 
- <script src="Js/script2.js"></script>
+ <script src="Js/script4.js"></script>
             
 </body>
 </html>

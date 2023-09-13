@@ -78,7 +78,7 @@
             
                             <div class="label_form">
                                 <label for="appointment_date">วันที่นัดแพทย์ :</label>
-                                <input type="date" id="appointment_date" name="appointment_date" required> <br><br>
+                                <input type="date" id="appointment_date" name="appointment_date" required oninput="validateAppointmentDate()"> <br><br>
                             </div>
 
 
@@ -122,7 +122,7 @@
 
                             <div class="btsubmit">
                                 <input type="submit" value="ยืนยัน">
-                                <a href="booking.php" class="cancel">
+                                <a href=".php" class="cancel">
                                     <p>ยกเลิก</p>
                                 </a>
                                 
