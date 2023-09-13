@@ -15,7 +15,7 @@
 
 
     // ดึงข้อมูลจำนวนแถวในตารางที่ต้องการ
-    $sql = "SELECT COUNT(*) as total_rows FROM booking_data"; // แทน table_name ด้วยชื่อตารางที่คุณใช้งาน
+    $sql = "SELECT COUNT(*) as total_rows FROM book"; // แทน table_name ด้วยชื่อตารางที่คุณใช้งาน
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -28,5 +28,9 @@
 
 
     $difference =  5 - $total_rows;
+
+    if($difference <= 0 ){
+        $difference = 0;
+    }
 
 ?>

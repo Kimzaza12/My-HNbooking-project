@@ -122,7 +122,7 @@
 
                             <div class="btsubmit">
                                 <input type="submit" value="ยืนยัน">
-                                <a href="main.php" class="cancel">
+                                <a href="booking.php" class="cancel">
                                     <p>ยกเลิก</p>
                                 </a>
                                 
