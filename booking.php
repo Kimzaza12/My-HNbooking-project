@@ -177,14 +177,14 @@
                                                                     <div class="boxdataall">
 
                                                                         <div class="boxdata">
-                                                                            <p>จำนวนห้องว่าง : </p>
+                                                                            <p>จำนวนห้องว่าง : <?php echo $difference_3; ?> </p>
                                                                         </div>
                                 
                                                                         <div class="boxdatasmall">
                                                                             <p>ราคา 600 / คืน</p>
                                                                         </div>
 
-                                                                        <a href="#" class="boxdatablacksmall">
+                                                                        <a href="summit_3.php" class="boxdatablacksmall">
                                                                             <p>ทำการจองห้องพัก</p>
                                                                         </a>
 
