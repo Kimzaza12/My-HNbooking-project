@@ -1,5 +1,5 @@
 <?php 
-    require_once 'db_register.php'; 
+    require_once 'db_cancel.php'; 
 ?>
 
 <!DOCTYPE html>
