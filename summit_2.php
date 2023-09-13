@@ -1,5 +1,5 @@
 <?php 
-    require_once 'db_submit.php'; 
+    require_once 'db_submit_2.php'; 
     require_once 'db_join.php'; 
 ?>
 
@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="allform_label">
-                        <form action="db_submit.php" method="post" onsubmit="return validateForm()">
+                        <form action="db_submit_2.php" method="post" onsubmit="return validateForm()">
 
                             <div class="label_form">
                                 <label for="current_datetime">วันและเวลาปัจจุบัน :</label>

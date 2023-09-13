@@ -133,14 +133,14 @@
                                                                     <div class="boxdataall">
 
                                                                         <div class="boxdata">
-                                                                            <p>จำนวนห้องว่าง : </p>
+                                                                            <p>จำนวนห้องว่าง : <?php echo $difference_2; ?> </p>
                                                                         </div>
                                 
                                                                         <div class="boxdatasmall">
                                                                             <p>ราคา 500 / คืน</p>
                                                                         </div>
 
-                                                                        <a href="#" class="boxdatablacksmall">
+                                                                        <a href="summit_2.php" class="boxdatablacksmall">
                                                                             <p>ทำการจองห้องพัก</p>
                                                                         </a>
 

@@ -33,4 +33,26 @@
         $difference = 0;
     }
 
+
+
+    $sql = "SELECT COUNT(*) as total_rows FROM book_2"; // แทน table_name ด้วยชื่อตารางที่คุณใช้งาน
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // ดึงข้อมูลจากผลลัพธ์
+        $row = $result->fetch_assoc();
+        $total_rows = $row["total_rows"];
+    } else {
+        $total_rows = 0;
+    }
+
+
+    $difference_2 =  5 - $total_rows;
+
+    if($difference_2 <= 0 ){
+        $difference_2 = 0;
+    }
+
+
+
 ?>
