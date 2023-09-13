@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital</title>
-    <link rel="stylesheet" href="css/style7.css">
+    <link rel="stylesheet" href="css/style7-cancel.css">
 
 
     <style>        
@@ -59,7 +59,7 @@
 
 
                         <div class="formtext">
-                            <p>กรุณากรอกข้อมูลเพื่อใช้สำหรับลงทะเบียนระบบจองห้องพัก</p>
+                            <p>กรุณากรอก HN และ เบอร์โทรศัพท์ผู้จอง เพื่อใช้สำหรับการยกเลิกจองห้องพัก</p>
                         </div>
 
                         <div class="allform_label">
@@ -73,38 +73,16 @@
 
                                         
 
-                                                    <div class="label_form">
-                                                        <label for="ID_number">เลขบัตรประชาชน :</label>
-                                                        <input type="text" id="ID_number" name="ID_number" maxlength="13" placeholder="กรุณาใส่เลขบัตรประชาชน 13 หลัก" oninput="this.value = this.value.replace(/[^0-9]/g, '')"><br><br>
-                                                    </div>
-
-                                                    <div class="label_form">
-                                                        <label for="S_name">ชื่อ-นามสกุล :</label>
-                                                        <input type="text" id="S_name" name="S_name" placeholder="กรุณาใส่ชื่อ-นามสกุล"><br><br>
-                                                    </div>
-
-                                                    <div class="label_form3">
-                                                        <label for="Department">แผนก :</label>
-                                                        <select id="Department" name="Department">
-                                                            <option value="" disabled selected>กรุณาเลือกแผนก</option>
-                                                            <option value="หู คอ จมูก">หู คอ จมูก</option>
-                                                            <option value="เด็ก">เด็ก</option>
-                                                            <option value="อายุรกรรม">อายุรกรรม</option>
-                                                        </select><br><br>
-                                                    </div>
 
                                                     <div class="label_form">
                                                         <label for="P_number">เบอร์โทรศัพท์ :</label>
                                                         <input type="tel" id="P_number" name="P_number" placeholder="กรุณาใส่เบอร์โทรศัพท์" oninput="this.value = this.value.replace(/[^0-9]/g, '')" ><br><br>
                                                     </div>
 
-                                                    <div class="label_form">
-                                                        <label for="Email">อีเมล :</label>
-                                                        <input type="email" id="Email" name="Email" placeholder="กรุณาใส่ email พร้อมเครื่องหมาย @ "><br><br>
-                                                    </div>
+
 
                                                     <div class="btsubmit">
-                                                        <input type="submit" value="ลงทะเบียน">
+                                                        <input type="submit" value="ยกเลิกห้องพัก">
                                                         <a href="main.php" class="cancel">
                                                             <p>กลับหน้าหลัก</p>
                                                         </a>
