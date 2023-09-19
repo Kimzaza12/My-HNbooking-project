@@ -30,7 +30,7 @@ function validateForm() {
   }
 
  
-  alert("ลงทะเบียนสำเร็จ"); // แจ้งเตือนลงทะเบียนสำเร็จ
+  //  alert("ลงทะเบียนสำเร็จ"); // แจ้งเตือนลงทะเบียนสำเร็จ
   
   // เปลี่ยนเส้นทางไปยังหน้า main.php
   window.location.href = "confirm.php";
