@@ -40,53 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }    
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $HN = $_POST["HN"];
-    $P_number = $_POST["P_number"];
 
-        $sql = "SELECT * FROM book_2 WHERE HN = '$HN' AND P_number = '$P_number'";
-        $result = $conn->query($sql);
-
-        if (mysqli_num_rows($result) > 0) {
-
-            // เรียกใช้คำสั่ง SQL เพื่อลบ attribute
-            $sql = "DELETE FROM book_2 WHERE HN = '$HN' AND P_number = '$P_number'";
-            $conn->query($sql);
-        
-            // แสดงข้อความแจ้งว่าลบ attribute สำเร็จ
-            echo "<script>alert('ยกเลิกจองห้องพักสำเร็จ');</script>";
-        } else {
-            echo "<script>alert('กรุณาตรวจสอบความถูกต้องว่า HN และ เบอร์โทรศัพท์ผู้จอง ถูกต้องหรือไม่');</script>";
-        }
-
-        
-
-
-}    
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $HN = $_POST["HN"];
-    $P_number = $_POST["P_number"];
-
-        $sql = "SELECT * FROM book_3 WHERE HN = '$HN' AND P_number = '$P_number'";
-        $result = $conn->query($sql);
-
-        if (mysqli_num_rows($result) > 0) {
-
-            // เรียกใช้คำสั่ง SQL เพื่อลบ attribute
-            $sql = "DELETE FROM book_3 WHERE HN = '$HN' AND P_number = '$P_number'";
-            $conn->query($sql);
-        
-            // แสดงข้อความแจ้งว่าลบ attribute สำเร็จ
-            echo "<script>alert('ยกเลิกจองห้องพักสำเร็จ');</script>";
-        } else {
-            echo "<script>alert('กรุณาตรวจสอบความถูกต้องว่า HN และ เบอร์โทรศัพท์ผู้จอง ถูกต้องหรือไม่');</script>";
-        }
-
-        
-
-
-}    
 
 
 

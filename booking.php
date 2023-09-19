@@ -140,7 +140,7 @@
                                                                             <p>ราคา 500 / คืน</p>
                                                                         </div>
 
-                                                                        <a href="summit_2.php" class="boxdatablacksmall">
+                                                                        <a href="summit_1.php" class="boxdatablacksmall">
                                                                             <p>ทำการจองห้องพัก</p>
                                                                         </a>
 
