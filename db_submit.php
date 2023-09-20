@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $P_number = $_POST["P_number"];
     $Email = $_POST["Email"];
     $room = $_POST['room'];
+    $status = "รออนุมัติ" ;
 
 
 
@@ -53,8 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         // เตรียมคำสั่ง SQL เพื่อเพิ่มข้อมูล
-        $sql = "INSERT INTO book (current_datetime, appointment_date, HN, ID_number, S_name, booked_by, Department, P_number, Email ,room)
-                VALUES ('$current_datetime', '$appointment_date', '$HN', '$ID_number', '$S_name', '$booked_by', '$Department', '$P_number', '$Email', '$room')";
+        $sql = "INSERT INTO book (current_datetime, appointment_date, HN, ID_number, S_name, booked_by, Department, P_number, Email ,room , Status)
+                VALUES ('$current_datetime', '$appointment_date', '$HN', '$ID_number', '$S_name', '$booked_by', '$Department', '$P_number', '$Email', '$room', '$status')";
 
         if ($conn->query($sql) === TRUE) {
             $messagetrue = "ลงทะเบียนสำเร็จ";

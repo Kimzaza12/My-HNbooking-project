@@ -59,7 +59,7 @@
 
 
                         <div class="formtext">
-                            <p>กรุณากรอกข้อมูลเพื่อใช้สำหรับลงทะเบียนระบบจองห้องพัก</p>
+                            <p>กรุณากรอกข้อมูลผู้ป่วยเพื่อใช้สำหรับลงทะเบียนระบบจองห้องพัก</p>
                         </div>
 
                         <div class="allform_label">
@@ -67,7 +67,7 @@
 
 
                                                     <div class="label_form">
-                                                        <label for="HN">รหัส HN ผู้เข้าพัก :</label>
+                                                        <label for="HN">รหัส HN ผู้ป่วยของท่าน :</label>
                                                         <input type="text" id="HN" name="HN" maxlength="10" placeholder="กรุณาใส่รหัส HN ที่ไม่เกิน 10 หลัก" oninput="this.value = this.value.replace(/[^0-9]/g, '')"><br><br>
                                                     </div>
 

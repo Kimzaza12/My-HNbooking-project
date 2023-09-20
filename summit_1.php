@@ -12,7 +12,7 @@
     <title>Hospital</title>
     <link rel="stylesheet" href="css/style1-1.css">
     <link rel="stylesheet" href="css/style3-1.css">
-    <link rel="stylesheet" href="css/style7-submit1.css">
+    <link rel="stylesheet" href="css/style7-sub.css">
 
     <style>        
         body{ margin: 0; }     
@@ -65,7 +65,7 @@
 
 
                         <div class="formtext">
-                            <p>กรุณากรอกข้อมูลสำหรับการจองห้องพัก (สำหรับสมาชิกที่ลงทะเบียนแล้วเท่านั้น)</p>
+                            <p>กรุณากรอกข้อมูลสำหรับการจองห้องพัก (สำหรับผู้ป่วยที่ลงทะเบียนแล้วเท่านั้น)</p>
                         </div>
 
                         <div class="allform_label">

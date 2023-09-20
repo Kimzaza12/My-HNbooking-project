@@ -104,7 +104,7 @@ require_once 'db_connection.php';
 
 
                                         <?php if ($difference > 0) { ?>
-                                            <a href="summit_1.php?room=1" class="boxdatablacksmall">
+                                            <a href="summit_1.php?room=ห้องพักแบบประหยัด" class="boxdatablacksmall">
                                                 <p>ทำการจองห้องพัก</p>
                                             </a>
                                         <?php } else { ?>
@@ -157,7 +157,7 @@ require_once 'db_connection.php';
                                         </div>
 
                                         <?php if ($difference_2 > 0) { ?>
-                                            <a href="summit_1.php?room=2" class="boxdatablacksmall">
+                                            <a href="summit_1.php?room=ห้องพักแบบพิเศษ 1" class="boxdatablacksmall">
                                                 <p>ทำการจองห้องพัก</p>
                                             </a>
                                         <?php } else { ?>
@@ -214,7 +214,7 @@ require_once 'db_connection.php';
                                         </div>
 
                                         <?php if ($difference_3 > 0) { ?>
-                                            <a href="summit_1.php?room=3" class="boxdatablacksmall">
+                                            <a href="summit_1.php?room=ห้องพักแบบพิเศษ 1" class="boxdatablacksmall">
                                                 <p>ทำการจองห้องพัก</p>
                                             </a>
                                         <?php } else { ?>

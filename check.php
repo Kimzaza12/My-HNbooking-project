@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital</title>
     <link rel="stylesheet" href="css/style1-1.css">
-    <link rel="stylesheet" href="css/style6.css">
-    <link rel="stylesheet" href="css/style5.css">
+    <link rel="stylesheet" href="css/style6-1.css">
+    <link rel="stylesheet" href="css/style5-1.css">
 
-    <style>        
-        body{ margin: 0; }     
+    <style>
+        body {
+            margin: 0;
+        }
     </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,136 +23,132 @@
 
 
 <body>
-            <div class="bar">
-            <div class="topic">
-                    <div class="logo"></div>
-                    <div class="navtext">
-                        <p>โรงพยาบาลปอปลาตากลม</p>
-                        <div class="bargreen"></div>
-                        <div class="navtext2">
-                            <p>จังหวัดมอ.หาดใหญ่</p> 
-                        </div>
-                    </div>
+    <div class="bar">
+        <div class="topic">
+            <div class="logo"></div>
+            <div class="navtext">
+                <p>โรงพยาบาลปอปลาตากลม</p>
+                <div class="bargreen"></div>
+                <div class="navtext2">
+                    <p>จังหวัดมอ.หาดใหญ่</p>
+                </div>
+            </div>
 
-                <div class="boxbt">
-                    <div class="bt">
-                            <a href="main.php">หน้าหลัก</a>
-                            <a href="register.php">ลงทะเบียน</a>
-                            <a href="booking.php">จองห้องพัก</a>
-                            <a href="cancel.php">ยกเลิกห้องพัก</a>
-                            <a href="check.php">ตรวจสอบการจอง</a>
-                            <a href="contact.php">ติดต่อสอบถาม</a>
-                    </div>
-
+            <div class="boxbt">
+                <div class="bt">
+                    <a href="main.php">หน้าหลัก</a>
+                    <a href="register.php">ลงทะเบียน</a>
+                    <a href="booking.php">จองห้องพัก</a>
+                    <a href="cancel.php">ยกเลิกห้องพัก</a>
+                    <a href="check.php">ตรวจสอบการจอง</a>
+                    <a href="contact.php">ติดต่อสอบถาม</a>
                 </div>
 
             </div>
 
-
-            
-            <div class="header">
-
-                <div class="bgwhite">
+        </div>
 
 
-                    <div class="tablehos">
 
-                    
+        <div class="header">
+
+            <div class="bgwhite">
+
+                <div class="formsearch">
+                    <form method="POST" action="">
+                        <label for="hn_search"> กรุณาใส่รหัส HN เพื่อค้นหา  </label>
+                        <input type="text" name="hn_search" id="hn_search" value="<?php echo isset($hn_search) ? $hn_search : ''; ?>">
+                        <input type="submit" value="ค้นหา">
+                    </form>
+                
+
+
+                    <div class="dbsearch">
 
                         <?php
-                            $servername = "localhost";
-                            $username = "root";
-                            $password = "";
-                            $dbname = "hospital";
 
-                            $conn = new mysqli($servername, $username, $password, $dbname);
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "hospital";
 
-                            if ($conn->connect_error) {
-                                die("การเชื่อมต่อล้มเหลือ: " . $conn->connect_error);
-                            }
+                        // สร้างการเชื่อมต่อ
+                        $conn = new mysqli($servername, $username, $password, $dbname);
 
-                            $rows_per_page = 10; // จำนวนแถวต่อหน้า
+                        // ตรวจสอบการเชื่อมต่อ
+                        if ($conn->connect_error) {
+                            die("การเชื่อมต่อล้มเหลว: " . $conn->connect_error);
+                        }
 
-                            $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                            $start_record = ($page - 1) * $rows_per_page;
-
-                            $sql = "SELECT * FROM booking_data LIMIT $start_record, $rows_per_page";
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                            $hn_search = $_POST["hn_search"];
+                            // ปรับเปลี่ยนคำสั่ง SQL เพื่อใช้เงื่อนไขค้นหา
+                            $sql = "SELECT * FROM book WHERE HN = '$hn_search';";
                             $result = $conn->query($sql);
-
-                            echo "<table>";
-                            echo "<tr><th>ID</th><th>Check-in Date</th><th>Check-out Date</th><th>Hospital ID</th><th>Citizen ID</th><th>Patient Name</th><th>Booker Name</th><th>Contact Number</th><th>Department</th></tr>";
-
-                            for ($i = 1; $i <= $rows_per_page; $i++) {
-                                if ($row = $result->fetch_assoc()) {
+                            
+                            if ($result->num_rows > 0) {
+                                // แสดงข้อมูลที่ค้นหาเจอในตาราง
+                                echo "<table border='1'>";
+                                echo "<tr>";
+                                echo "<th font-size: 18px;'>HN ผู้ป่วย</th>";
+                                echo "<th font-size: 18px;'>ชื่อ-นามสกุล (ผู้ป่วย)</th>";
+                                echo "<th font-size: 18px;'>แผนก</th>";
+                                echo "<th font-size: 18px;'>ชื่อ-นามสกุล (ผู้จอง)</th>";
+                                echo "<th font-size: 18px;'>ประเภทห้องพัก</th>";
+                                echo "<th font-size: 18px;'>สถานะการจอง</th>";
+                                echo "</tr>";
+                                
+                                while ($row = $result->fetch_assoc()) {
                                     echo "<tr>";
-                                    echo "<td>".$row["id"]."</td>";
-                                    echo "<td>".$row["checkin_date"]."</td>";
-                                    echo "<td>".$row["checkout_date"]."</td>";
-                                    echo "<td>".$row["hospital_id"]."</td>";
-                                    echo "<td>".$row["citizen_id"]."</td>";
-                                    echo "<td>".$row["patient_name"]."</td>";
-                                    echo "<td>".$row["booker_name"]."</td>";
-                                    echo "<td>".$row["contact_number"]."</td>";
-                                    echo "<td>".$row["department"]."</td>";
-                                    echo "</tr>";
-                                } else {
-                                    echo "<tr>";
-                                    echo "<td>&nbsp;</td>";
-                                    echo "<td>&nbsp;</td>";
-                                    echo "<td>&nbsp;</td>";
-                                    echo "<td>&nbsp;</td>";
-                                    echo "<td>&nbsp;</td>";
-                                    echo "<td>&nbsp;</td>";
-                                    echo "<td>&nbsp;</td>";
-                                    echo "<td>&nbsp;</td>";
-                                    echo "<td>&nbsp;</td>";
+                                    echo "<td>" . $row['HN'] . "</td>";
+                                    echo "<td>" . $row['S_name'] . "</td>";
+                                    echo "<td>" . $row['Department'] . "</td>";
+                                    echo "<td>" . $row['booked_by'] . "</td>";
+                                    echo "<td>" . $row['room'] . "</td>";
+                                    echo "<td>" . $row['Status'] . "</td>";
                                     echo "</tr>";
                                 }
+                                echo "</table>";
+                            } else {
+                                // ตรวจสอบว่า $hn_search ไม่ว่างเปล่า (ไม่มีข้อมูลในกล่องข้อความ)
+                                if (!empty($hn_search)) {
+                                    echo "<script>
+                                        alert('ไม่พบข้อมูลที่ค้นหา กรุณาตรวจสอบรหัส HN ใหม่อีกครั้ง');
+                                        setTimeout(function() {
+                                            window.location.href = 'check.php';
+                                        }, 3000); // 3 วินาที
+                                    </script>";
+                                }
                             }
-
-                            echo "</table>";
-
-                            $conn->close();
+                        }
                         ?>
 
-                    
-
-       
-
-
-
-                    
-                    
-                            <div class="tablebt">
-                                <div class="pagination">
-                                    <a href="your_page.php?page=1">หน้า 1 </a>
-                                    <a href="your_page.php?page=2">หน้า 2 </a>
-                                    <a href="your_page.php?page=3">หน้า 3 </a>
-                                </div>
-                            </div>     
-
-                    </div>            
-
-
-
+                    </div>
                 </div>
-
-
-
-                                
 
 
 
 
 
             </div>
-          
 
 
 
 
 
 
-            
+
+
+
+        </div>
+
+
+
+
+
+
+
+
 </body>
+
 </html>

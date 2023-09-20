@@ -17,7 +17,7 @@
 
 
 
-    $sql = "SELECT COUNT(*) as room1 FROM book WHERE room = 1";
+    $sql = "SELECT COUNT(*) as room1 FROM book WHERE room = 'ห้องพักแบบประหยัด'";
     $result = $conn->query($sql);
 
 
@@ -34,7 +34,7 @@
 
 
     $total_rows_2 = 5;
-    $sql = "SELECT COUNT(*) as room2 FROM book WHERE room = 2";
+    $sql = "SELECT COUNT(*) as room2 FROM book WHERE room = 'ห้องพักแบบพิเศษ 1'";
     $result = $conn->query($sql);
     $difference_2 =  5 - $total_rows_2;
 
@@ -52,7 +52,7 @@
 
 
     $total_rows_3 = 5;
-    $sql = "SELECT COUNT(*) as room3 FROM book WHERE room = 3";
+    $sql = "SELECT COUNT(*) as room3 FROM book WHERE room = 'ห้องพักแบบพิเศษ 2'";
     $result = $conn->query($sql);
     $difference_3 =  5 - $total_rows_3;
 

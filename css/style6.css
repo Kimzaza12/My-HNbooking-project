@@ -7,6 +7,8 @@ body{
     background: #EAE9E9;
 }
 
+
+
 .header{
     display: flex;
     justify-content: center;
@@ -15,13 +17,14 @@ body{
     padding-left: 59px;
     padding-right: 59px;
     padding-bottom: 82px;
+    background: linear-gradient(to bottom right, #DAE1E8, #CFD6DE);
 }
 
 .bgwhite{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    justify-content: start;
+    align-items: start;
+    width: 1000px;
     height: 105vh;
     border-radius: 20px;
     background: #FFF;
