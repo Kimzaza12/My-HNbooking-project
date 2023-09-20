@@ -283,6 +283,20 @@ body{
     
 }
 
+
+.boxdatablacksmallsos{
+    display: inline-block;
+
+    width: 151px;
+
+    border-radius: 10px;
+    background: #fd4848;
+    margin-left: 22px;
+    text-decoration:none;
+
+
+}
+
 .boxdatablacksmall p{
     color: #FFF;
     display: flex;

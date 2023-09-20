@@ -12,7 +12,7 @@
     <title>Hospital</title>
     <link rel="stylesheet" href="css/style1-1.css">
     <link rel="stylesheet" href="css/style3-1.css">
-    <link rel="stylesheet" href="css/style7-submit.css">
+    <link rel="stylesheet" href="css/style7-submit1.css">
 
     <style>        
         body{ margin: 0; }     
@@ -73,8 +73,8 @@
 
 
                             <div class="label_form3">
-                                <label for="room">หมายเลขห้อง :</label>
-                                <input type="text" id="room" name="room" readonly><br><br>
+                                <label for="room">หมายเลขห้อง : 
+                                <input type="text" id="room" name="room" readonly></label><br>
                             </div>
 
                             <div class="label_form">
@@ -159,7 +159,6 @@
             </div>    
 
 
-          
 
     <script src="Js/script3.js"></script>
     <script src="Js/script5.js"></script>
