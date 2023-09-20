@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2023 at 06:46 AM
+-- Generation Time: Sep 20, 2023 at 02:43 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -37,61 +37,17 @@ CREATE TABLE `book` (
   `Department` varchar(255) DEFAULT NULL,
   `P_number` varchar(10) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
-  `Price` int(255) NOT NULL
+  `room` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `book`
 --
 
-INSERT INTO `book` (`current_datetime`, `appointment_date`, `HN`, `ID_number`, `S_name`, `booked_by`, `Department`, `P_number`, `Email`, `Price`) VALUES
-('2023-09-14 00:15:35', '2023-09-16', '6310210403', '1830101151811', 'สมสาย มานีนา', 'มาโนช ชัพพลาย', 'อายุรกรรม', '0813246551', 'somchai@gmail.com', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `book_2`
---
-
-CREATE TABLE `book_2` (
-  `current_datetime` datetime NOT NULL,
-  `appointment_date` date NOT NULL,
-  `HN` varchar(10) NOT NULL,
-  `ID_number` varchar(13) DEFAULT NULL,
-  `S_name` varchar(255) DEFAULT NULL,
-  `booked_by` varchar(255) DEFAULT NULL,
-  `Department` varchar(255) DEFAULT NULL,
-  `P_number` varchar(10) DEFAULT NULL,
-  `Email` varchar(255) DEFAULT NULL,
-  `Price` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `book_2`
---
-
-INSERT INTO `book_2` (`current_datetime`, `appointment_date`, `HN`, `ID_number`, `S_name`, `booked_by`, `Department`, `P_number`, `Email`, `Price`) VALUES
-('2023-09-13 22:52:02', '2023-09-15', '6310210013', '1839400000000', 'ศาสตราวุธ ผงเผ่า', 'มาโนช ชัพพลาย', 'เด็ก', '0813246551', 'hamsusu@gmail.com', 0),
-('2023-09-13 23:09:14', '2023-09-16', '6310210403', '1830101151811', 'สมสาย มานีนา', 'มาโนช ชัพพลาย', 'อายุรกรรม', '0646215488', 'hamsusu@gmail.com', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `book_3`
---
-
-CREATE TABLE `book_3` (
-  `current_datetime` datetime NOT NULL,
-  `appointment_date` date DEFAULT NULL,
-  `HN` varchar(10) NOT NULL,
-  `ID_number` varchar(13) DEFAULT NULL,
-  `S_name` varchar(255) DEFAULT NULL,
-  `booked_by` varchar(255) DEFAULT NULL,
-  `Department` varchar(255) DEFAULT NULL,
-  `P_number` varchar(10) DEFAULT NULL,
-  `Email` varchar(255) DEFAULT NULL,
-  `Price` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `book` (`current_datetime`, `appointment_date`, `HN`, `ID_number`, `S_name`, `booked_by`, `Department`, `P_number`, `Email`, `room`) VALUES
+('2023-09-19 22:57:46', '2023-09-21', '6310210013', '1839400000000', 'ศาสตราวุธ ผงเผ่า', 'มาโนช ชัพพลาย', 'เด็ก', '0816452112', 'hamsusu@gmail.com', '1'),
+('2023-09-20 18:35:59', '2023-09-23', '6310210160', '1839900642600', 'จักกรี อารี', 'สายฝน กลางคืน', 'หู คอ จมูก', '0813246551', 'somchar@gmail.com', '1'),
+('2023-09-20 18:28:31', '2023-09-22', '6310210403', '1830101151811', 'สมสาย มานีนา', 'มาโนช ชัพพลาย', 'อายุรกรรม', '0646215488', 'somchai@gmail.com', '2');
 
 -- --------------------------------------------------------
 
@@ -194,18 +150,6 @@ INSERT INTO `room` (`r_id`, `r_name`) VALUES
 -- Indexes for table `book`
 --
 ALTER TABLE `book`
-  ADD PRIMARY KEY (`HN`);
-
---
--- Indexes for table `book_2`
---
-ALTER TABLE `book_2`
-  ADD PRIMARY KEY (`HN`);
-
---
--- Indexes for table `book_3`
---
-ALTER TABLE `book_3`
   ADD PRIMARY KEY (`HN`);
 
 --
