@@ -99,7 +99,7 @@
                                                                     <p>ราคา 300 / คืน</p>
                                                                 </div>
 
-                                                                <a href="summit_1.php" class="boxdatablacksmall">
+                                                                <a href="summit_1.php?room=1" class="boxdatablacksmall">
                                                                     <p>ทำการจองห้องพัก</p>
                                                                 </a>
 
@@ -140,7 +140,7 @@
                                                                             <p>ราคา 500 / คืน</p>
                                                                         </div>
 
-                                                                        <a href="summit_1.php" class="boxdatablacksmall">
+                                                                        <a href="summit_1.php?room=2" class="boxdatablacksmall">
                                                                             <p>ทำการจองห้องพัก</p>
                                                                         </a>
 
@@ -184,7 +184,7 @@
                                                                             <p>ราคา 600 / คืน</p>
                                                                         </div>
 
-                                                                        <a href="summit_3.php" class="boxdatablacksmall">
+                                                                        <a href="summit_1.php?room=3" class="boxdatablacksmall">
                                                                             <p>ทำการจองห้องพัก</p>
                                                                         </a>
 

@@ -48,12 +48,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<script>window.location.href='summit_1.php'</script>";
         } else {
 
+            
 
         $messagetrue = "ลงทะเบียนสำเร็จ";
         echo "<script>alert('".$messagetrue."')</script>";
         // เตรียมคำสั่ง SQL เพื่อเพิ่มข้อมูล
-        $sql = "INSERT INTO book (current_datetime, appointment_date, HN, ID_number, S_name, booked_by, Department, P_number, Email)
-                VALUES ('$current_datetime', '$appointment_date', '$HN', '$ID_number', '$S_name', '$booked_by', '$Department', '$P_number', '$Email')";
+        $sql = "INSERT INTO book (current_datetime, appointment_date, HN, ID_number, S_name, booked_by, Department, P_number, Email ,room)
+                VALUES ('$current_datetime', '$appointment_date', '$HN', '$ID_number', '$S_name', '$booked_by', '$Department', '$P_number', '$Email', '$room')";
 
         if ($conn->query($sql) === TRUE) {
             header("Location: confirm.php"); // เปลี่ยนทิศทางไปยัง confirm.php

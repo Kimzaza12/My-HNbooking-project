@@ -71,6 +71,12 @@
                         <div class="allform_label">
                         <form action="db_submit.php" method="post" onsubmit="return validateForm()">
 
+
+                            <div class="label_form3">
+                                <label for="room">หมายเลขห้อง :</label>
+                                <input type="text" id="room" name="room" readonly><br><br>
+                            </div>
+
                             <div class="label_form">
                                 <label for="current_datetime">วันและเวลาปัจจุบัน :</label>
                                 <input type="text" id="current_datetime" name="current_datetime" value="<?php echo $current_datetime; ?>" readonly><br><br>
@@ -80,6 +86,8 @@
                                 <label for="appointment_date">วันที่นัดแพทย์ :</label>
                                 <input type="date" id="appointment_date" name="appointment_date" required oninput="validateAppointmentDate()"> <br><br>
                             </div>
+
+
 
 
                             <div class="label_form">
@@ -154,6 +162,7 @@
           
 
     <script src="Js/script3.js"></script>
+    <script src="Js/script5.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             
 </body>
