@@ -57,6 +57,35 @@
     }    
 
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $room_name = $_POST["room_name"];
+        $room_price = $_POST["room_price"];
+        $availability = $_POST["availability"];
+    
+        // สร้างคำสั่ง SQL เพื่อเพิ่มข้อมูลห้องพัก
+        $sql = "INSERT INTO room (room_name, room_price, availability) VALUES ('$room_name', $room_price, $availability)";
+    
+        if ($conn->query($sql) === TRUE) {
+            echo "เพิ่มห้องพักใหม่เรียบร้อยแล้ว";
+        } else {
+            echo "เกิดข้อผิดพลาดในการเพิ่มห้องพัก: " . $conn->error;
+        }
+    }
+
+    // ตรวจสอบว่าคำสั่ง SQL ทำงานได้หรือไม่
+    if ($result = $conn->query($sql)) {
+        // เรียกใช้ฟังก์ชัน fetch_assoc เพื่อดึงข้อมูลจากคำสั่ง SQL
+        while ($row = $result->fetch_assoc()) {
+            // เพิ่มข้อมูลลงในอาร์เรย์ $rooms
+            $rooms[] = $row;
+        }
+        // ปิดคำสั่ง SQL
+        $result->close();
+    }
+
+
+
+
 
 
 

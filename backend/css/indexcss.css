@@ -57,9 +57,9 @@ div.container div.row h1 {
 }
 
 .box2 {
-    background-color: #D9D9D9;
-    width: 305px;
-    height: 210px;
+    background-color: #525252;
+    width: 336px;
+    height: 200px;
     margin-left: -12px;
     display: flex;
     flex-direction: row-reverse;

@@ -49,7 +49,7 @@ session_start();
             <button type="submit" name="submit">Sign in </button>
 
             <div class="extra">
-                <a href="/thesisfull/main.php"> กลับสู่หน้าหลักของระบบ</a>
+                <a href="/main.php"> กลับสู่หน้าหลักของระบบ</a>
             </div>
 
         </form>
