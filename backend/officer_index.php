@@ -15,7 +15,14 @@ if (!isset($_SESSION['officer_login'])) {
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- style link -->
-    <link rel="stylesheet" href="css/indexcss.css">
+    <link rel="stylesheet" href="css/indexcss2.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+
+
     <title>Officer</title>
 </head>
 
@@ -44,20 +51,23 @@ if (!isset($_SESSION['officer_login'])) {
 
     <div class="container">
         <div class="row">
-            <h1> ยินดีต้อนรับ </h1>
+            <div class="texth1">
+                <h1> ยินดีต้อนรับ </h1>
+            </div>
+
             <div class="box1">
                 <div class="box2">
-                    <img src="/code/backend/images/bed.png" width="140" height="140">
+                    <img src="/code/backend/images/bed.png" >
                     <div class="textbox2">
                         <h2> <?php echo $totalRoom; ?> </h2>
                         <a> จำนวนห้องว่าง </a>
                     </div>
                 </div>
-            </div>
-            <div class="box3">
+            
+            
                 <div class="box4">
-                    <img src="/code/backend/images/booking.png" width="130" height="130">
-                    <div class="textbox1">
+                    <img src="/code/backend/images/booking.png" >
+                    <div class="textbox2">
                         <h2> <?php echo $totalApporve; ?> </h2>
                         <a> รออนุมัติ </a>
                     </div>
@@ -85,9 +95,16 @@ if (!isset($_SESSION['officer_login'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="officer_approve.php"> อนุมัติการจอง </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login_page.php"> ออกจากระบบ </a>
-                </li>
+                <div class="boxout">
+                    <div class="endout">
+                        <li class="nav-item">
+                            <a class="nav-link" href="login_page.php"> ออกจากระบบ </a>
+                        </li>
+                    </div>
+                </div>
+
+
+
             </ul>
         </nav>
 
