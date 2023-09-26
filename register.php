@@ -85,12 +85,15 @@
 
                                                     <div class="label_form3">
                                                         <label for="Department">แผนก :</label>
+
                                                         <select id="Department" name="Department">
                                                             <option value="" disabled selected>กรุณาเลือกแผนก</option>
                                                             <option value="หู คอ จมูก">หู คอ จมูก</option>
                                                             <option value="เด็ก">เด็ก</option>
                                                             <option value="อายุรกรรม">อายุรกรรม</option>
                                                         </select><br><br>
+
+                                                        
                                                     </div>
 
                                                     <div class="label_form">

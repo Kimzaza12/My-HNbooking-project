@@ -42,7 +42,7 @@ if (!isset($_SESSION['admin_login'])) {
             <h1> ยินดีต้อนรับ </h1>
             <div class="box1">
                 <div class="box2">
-                    <img src= "/thesisfull/backend/images/people-fill.svg" width="150" height="200">
+                    <img src= "/code/backend/images/people-fill.svg" width="150" height="200">
                     <div class="textbox2">
                         <h2> <?php echo $totalMembers; ?> </h2>
                         <a> จำนวนสมาชิก </a>
