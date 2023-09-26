@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2023 at 10:06 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Sep 25, 2023 at 04:33 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -55,22 +55,32 @@ INSERT INTO `book` (`current_datetime`, `appointment_date`, `HN`, `ID_number`, `
 --
 -- Table structure for table `department`
 --
+-- Error reading structure for table hospital.department: #1932 - Table 'hospital.department' doesn't exist in engine
+-- Error reading data for table hospital.department: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `hospital`.`department`' at line 1
 
-CREATE TABLE `department` (
-  `d_id` char(10) NOT NULL,
-  `d_name` varchar(15) CHARACTER SET tis620 COLLATE tis620_thai_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `department`
+-- Table structure for table `member`
 --
 
-INSERT INTO `department` (`d_id`, `d_name`) VALUES
-('D-1', 'อายุรกรรม'),
-('D-2', 'เด็ก'),
-('D-3', 'สูตินรีเวช'),
-('D-4', 'กระดูกและข้อ'),
-('D-5', 'หู คอ จมูก');
+CREATE TABLE `member` (
+  `m_id` int(10) NOT NULL,
+  `m_firstname` varchar(200) NOT NULL,
+  `m_lastname` varchar(200) NOT NULL,
+  `m_username` varchar(200) NOT NULL,
+  `m_password` varchar(200) NOT NULL,
+  `m_level` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `member`
+--
+
+INSERT INTO `member` (`m_id`, `m_firstname`, `m_lastname`, `m_username`, `m_password`, `m_level`) VALUES
+(1, 'mosskrit', 'sakda', 'moss123', '456789', 'admin'),
+(2, 'kritza', 'sakda', 'moss789', '789456', 'officer'),
+(3, 'popeyeza', 'lol', 'admin1', '123456', 'officer');
 
 -- --------------------------------------------------------
 
@@ -143,6 +153,53 @@ INSERT INTO `room` (`r_id`, `r_name`) VALUES
 ('R-2', 'พิเศษ 1'),
 ('R-3', 'พิเศษ 2');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_num`
+--
+
+CREATE TABLE `room_num` (
+  `rn_id` int(10) NOT NULL,
+  `rt_id` int(10) NOT NULL,
+  `rn_name` varchar(200) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
+  `rn_status` varchar(200) CHARACTER SET tis620 COLLATE tis620_thai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `room_num`
+--
+
+INSERT INTO `room_num` (`rn_id`, `rt_id`, `rn_name`, `rn_status`) VALUES
+(1, 1, 'Room-1', 'ห้องว่าง'),
+(2, 3, 'Room-2', 'ห้องว่าง'),
+(3, 2, 'Room-3', 'ห้องว่าง'),
+(4, 3, 'Room-4', 'ห้องว่าง'),
+(12, 13, 'Room-5', 'ห้องไม่ว่าง');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_type`
+--
+
+CREATE TABLE `room_type` (
+  `rt_id` int(10) NOT NULL,
+  `rt_type` varchar(200) CHARACTER SET tis620 COLLATE tis620_thai_ci NOT NULL,
+  `rt_price` varchar(200) CHARACTER SET tis620 COLLATE tis620_thai_ci NOT NULL,
+  `rt_img` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `room_type`
+--
+
+INSERT INTO `room_type` (`rt_id`, `rt_type`, `rt_price`, `rt_img`) VALUES
+(1, 'พิเศษ 1', '2500', '164299518.jpg'),
+(2, 'พิเศษ 2', '4000', '1698634197.jpg'),
+(3, 'ราคาประหยัด 1', '400', '1019634679.jpg'),
+(13, 'ราคาประหยัด 2', '600', '1374815459.jpg');
+
 --
 -- Indexes for dumped tables
 --
@@ -154,10 +211,10 @@ ALTER TABLE `book`
   ADD PRIMARY KEY (`HN`);
 
 --
--- Indexes for table `department`
+-- Indexes for table `member`
 --
-ALTER TABLE `department`
-  ADD PRIMARY KEY (`d_id`);
+ALTER TABLE `member`
+  ADD PRIMARY KEY (`m_id`);
 
 --
 -- Indexes for table `patient`
@@ -179,14 +236,45 @@ ALTER TABLE `room`
   ADD PRIMARY KEY (`r_id`);
 
 --
+-- Indexes for table `room_num`
+--
+ALTER TABLE `room_num`
+  ADD PRIMARY KEY (`rn_id`),
+  ADD KEY `rt_id` (`rt_id`);
+
+--
+-- Indexes for table `room_type`
+--
+ALTER TABLE `room_type`
+  ADD PRIMARY KEY (`rt_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `member`
+--
+ALTER TABLE `member`
+  MODIFY `m_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `register`
 --
 ALTER TABLE `register`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `room_num`
+--
+ALTER TABLE `room_num`
+  MODIFY `rn_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `room_type`
+--
+ALTER TABLE `room_type`
+  MODIFY `rt_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -197,6 +285,12 @@ ALTER TABLE `register`
 --
 ALTER TABLE `patient`
   ADD CONSTRAINT `patient_ibfk_1` FOREIGN KEY (`d_id`) REFERENCES `department` (`d_id`);
+
+--
+-- Constraints for table `room_num`
+--
+ALTER TABLE `room_num`
+  ADD CONSTRAINT `rt_id` FOREIGN KEY (`rt_id`) REFERENCES `room_type` (`rt_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

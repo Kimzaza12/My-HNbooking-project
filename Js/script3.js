@@ -9,10 +9,6 @@ function autoTab(input, nextField, prevField) {
 }
 
 
-
-
-
-
 function validateForm() {
   var appointment_date = document.getElementById("appointment_date").value;  
   var HN = document.getElementById("HN").value;

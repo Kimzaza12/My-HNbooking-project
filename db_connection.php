@@ -14,9 +14,6 @@
     }
 
 
-
-
-
     $sql = "SELECT COUNT(*) as room1 FROM book WHERE room = 'ห้องพักแบบประหยัด'";
     $result = $conn->query($sql);
 
@@ -28,10 +25,6 @@
         // คำนวณความต่าง
         $difference = 5 - $room1Count;
     }    
-
-
-
-
 
     $total_rows_2 = 5;
     $sql = "SELECT COUNT(*) as room2 FROM book WHERE room = 'ห้องพักแบบพิเศษ 1'";
@@ -47,9 +40,6 @@
         
 
     }    
-
-
-
 
     $total_rows_3 = 5;
     $sql = "SELECT COUNT(*) as room3 FROM book WHERE room = 'ห้องพักแบบพิเศษ 2'";
