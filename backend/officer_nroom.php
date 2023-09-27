@@ -101,37 +101,38 @@ if (isset($_GET['delete'])) {
         </div>
     </div>
 
+
     <nav class="sidebar">
-            <ul class="nav flex-column">
-                <hr>
-                <div class="ad-name">
-                    <h1> <?php echo  $row['m_firstname'] . ' ' . $row['m_lastname'] ?> </h1>
+        <ul class="nav flex-column">
+            <hr>
+            <div class="ad-name">
+                <h1> <?php echo  $row['m_firstname'] . ' ' . $row['m_lastname'] ?> </h1>
+            </div>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link" href="officer_index.php"> หน้าหลัก </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="officer_department.php"> แผนกผู้ป่วย </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="officer_room.php"> ประเภทห้องพัก </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="officer_nroom.php"> จำนวนห้องพัก </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="officer_approve.php"> อนุมัติการจอง </a>
+            </li>
+            <div class="boxout">
+                <div class="endout">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login_page.php"> ออกจากระบบ </a>
+                    </li>
                 </div>
-                <hr>
-                <li class="nav-item">
-                    <a class="nav-link" href="officer_index.php"> หน้าหลัก </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="officer_room.php"> ประเภทห้องพัก </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="officer_nroom.php"> จำนวนห้องพัก </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="officer_approve.php"> อนุมัติการจอง </a>
-                </li>
-                <div class="boxout">
-                    <div class="endout">
-                        <li class="nav-item">
-                            <a class="nav-link" href="login_page.php"> ออกจากระบบ </a>
-                        </li>
-                    </div>
-                </div>
-
-
-
-            </ul>
-        </nav>
+            </div>
+        </ul>
+    </nav>
 
 
     <div class="container">

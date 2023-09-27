@@ -15,7 +15,7 @@ if (!isset($_SESSION['admin_login'])) {
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- style link -->
-    <link rel="stylesheet" href="css/indexcss.css">
+    <link rel="stylesheet" href="css/indexcss2.css">
     <title>Admin Index</title>
 </head>
 
