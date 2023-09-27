@@ -37,7 +37,7 @@ if (!isset($_SESSION['officer_login'])) {
     $row = $result->fetch(PDO::FETCH_ASSOC);
     $totalApporve = $row['total_approve'];
 
-    $sql = "SELECT COUNT(rn_id) AS total_room FROM room_num";
+    $sql = "SELECT COUNT(rn_id) AS total_room FROM room_num WHERE rn_status = 'ห้องว่าง'";
     $result = $conn->query($sql);
     $row = $result->fetch(PDO::FETCH_ASSOC);
     $totalRoom = $row['total_room'];
@@ -96,7 +96,7 @@ if (!isset($_SESSION['officer_login'])) {
                 <a class="nav-link" href="officer_room.php"> ประเภทห้องพัก </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="officer_nroom.php"> จำนวนห้องพัก </a>
+                <a class="nav-link" href="officer_nroom.php"> สถานะห้องพัก </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="officer_approve.php"> อนุมัติการจอง </a>

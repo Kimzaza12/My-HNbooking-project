@@ -28,7 +28,7 @@ if (isset($_GET['delete'])) {
 
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="css/indexcss.css">
 
 
@@ -99,7 +99,7 @@ if (isset($_GET['delete'])) {
                 <a class="nav-link" href="officer_room.php"> ประเภทห้องพัก </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="officer_nroom.php"> จำนวนห้องพัก </a>
+                <a class="nav-link" href="officer_nroom.php"> สถานะห้องพัก </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="officer_approve.php"> อนุมัติการจอง </a>
