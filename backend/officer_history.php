@@ -3,19 +3,6 @@ session_start();
 
 require_once('db.php');
 
-//ลบข้อมูล
-if (isset($_GET['delete'])) {
-    $delete_HN = $_GET['delete'];
-    $deletestmt = $conn->query("DELETE FROM book WHERE HN = $delete_HN");
-    $deletestmt->execute();
-
-    if ($deletestmt) {
-        echo "<script>alert('Data has been deleted successfully');</script>";
-        $_SESSION['success'] = "Data has been deleted succesfully";
-        header("refresh:1; url=officer_nroom.php");
-    }
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,34 +96,34 @@ if (isset($_GET['delete'])) {
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">HN ผู้ป่วย</th>
+                        <th scope="col">รหัสบัตรประชาชน</th>
                         <th scope="col">ชื่อ-นามสกุล(ผู้ป่วย)</th>
                         <th scope="col">แผนก</th>
                         <th scope="col">ชื่อ-นามสกุล(ผู้จอง)</th>
-                        <th scope="col">ประเภทห้องพัก</th>
+                        <th scope="col">ห้องพัก</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php
-                    $stmt = $conn->query("SELECT * FROM book");
+                    $stmt = $conn->query("SELECT * FROM history");
                     $stmt->execute();
-                    $book = $stmt->fetchAll();
+                    $history = $stmt->fetchAll();
 
-                    if (!$book) {
-                        echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                    if (!$history) {
+                        echo "<p><td colspan='8' class='text-center'>No data available</td></p>";
                     } else {
                         $i = 1;
-                        foreach ($book as $rbook) {
+                        foreach ($history as $ht) {
                     ?>
                             <tr>
                                 <td> <?php echo $i; ?> </td>
-                                <td><?php echo $rbook['HN']; ?></td>
-                                <td><?php echo $rbook['S_name']; ?></td>
-                                <td><?php echo $rbook['Department']; ?></td>
-                                <td><?php echo $rbook['booked_by']; ?></td>
-                                <td><?php echo $rbook['room']; ?></td>
-                        
-                                   
+                                <td><?php echo $ht['h_HN']; ?></td>
+                                <td><?php echo $ht['h_idnum']; ?></td>
+                                <td><?php echo $ht['h_name']; ?></td>
+                                <td><?php echo $ht['h_dp']; ?></td>
+                                <td><?php echo $ht['h_book']; ?></td>
+                                <td><?php echo $ht['h_room']; ?></td>
                     <?php
                             $i++;
                         }

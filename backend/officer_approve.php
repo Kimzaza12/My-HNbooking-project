@@ -22,16 +22,38 @@ if (isset($_GET['approve'])) {
     }
 }
 
-//ลบข้อมูล
 if (isset($_GET['delete'])) {
     $delete_HN = $_GET['delete'];
-    $deletestmt = $conn->query("DELETE FROM book WHERE HN = $delete_HN");
-    $deletestmt->execute();
 
-    if ($deletestmt) {
-        echo "<script>alert('Data has been deleted successfully');</script>";
-        $_SESSION['success'] = "Data has been deleted succesfully";
-        header("refresh:1; url=officer_nroom.php");
+    // ดึงข้อมูลที่จะถูกลบออกมาจากตาราง 'book'
+    $selectstmt = $conn->prepare("SELECT * FROM book WHERE HN = ?");
+    $selectstmt->bindParam(1, $delete_HN, PDO::PARAM_STR);
+    $selectstmt->execute();
+    $result = $selectstmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        // เพิ่มข้อมูลลงในตาราง 'history'
+        $insertstmt = $conn->prepare("INSERT INTO history (h_HN, h_idnum, h_name, h_book, h_dp, h_room) VALUES (?, ?, ?, ?, ?, ?)");
+        $insertstmt->bindParam(1, $result['HN'], PDO::PARAM_STR);
+        $insertstmt->bindParam(2, $result['ID_number'], PDO::PARAM_STR);
+        $insertstmt->bindParam(3, $result['S_name'], PDO::PARAM_STR);
+        $insertstmt->bindParam(4, $result['booked_by'], PDO::PARAM_STR);
+        $insertstmt->bindParam(5, $result['Department'], PDO::PARAM_STR);
+        $insertstmt->bindParam(6, $result['room'], PDO::PARAM_STR);
+        $insertstmt->execute();
+
+        // ลบข้อมูลจากตาราง 'book'
+        $deletestmt = $conn->prepare("DELETE FROM book WHERE HN = ?");
+        $deletestmt->bindValue(1, $delete_HN, PDO::PARAM_STR); // ใช้ bindValue แทน bindParam
+        $deletestmt->execute();
+
+        if ($deletestmt && $insertstmt) {
+            echo "<script>alert('Data has been deleted successfully and added to history');</script>";
+            $_SESSION['success'] = "Data has been deleted successfully and added to history";
+            header("refresh:1; url=officer_nroom.php");
+        }
+    } else {
+        echo "<script>alert('Data not found');</script>";
     }
 }
 
@@ -131,10 +153,11 @@ if (isset($_GET['delete'])) {
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">HN ผู้ป่วย</th>
+                        <th scope="col">รหัสบัตรประชาชน</th>
                         <th scope="col">ชื่อ-นามสกุล(ผู้ป่วย)</th>
                         <th scope="col">แผนก</th>
                         <th scope="col">ชื่อ-นามสกุล(ผู้จอง)</th>
-                        <th scope="col">ประเภทห้องพัก</th>
+                        <th scope="col">ห้องพัก</th>
                         <th scope="col">สถานะการจอง</th>
                         <th scope="col">จัดการ</th>
                     </tr>
@@ -155,6 +178,7 @@ if (isset($_GET['delete'])) {
                             <tr>
                                 <td> <?php echo $i; ?> </td>
                                 <td><?php echo $rbook['HN']; ?></td>
+                                <td><?php echo $rbook['ID_number']; ?></td>
                                 <td><?php echo $rbook['S_name']; ?></td>
                                 <td><?php echo $rbook['Department']; ?></td>
                                 <td><?php echo $rbook['booked_by']; ?></td>
