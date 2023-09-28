@@ -95,9 +95,9 @@ if (!isset($_SESSION['officer_login'])) {
             <li class="nav-item">
                 <a class="nav-link" href="officer_room.php"> ประเภทห้องพัก </a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link" href="officer_nroom.php"> สถานะห้องพัก </a>
-            </li>
+            </li>-->
             <li class="nav-item">
                 <a class="nav-link" href="officer_approve.php"> อนุมัติการจอง </a>
             </li>
