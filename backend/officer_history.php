@@ -3,25 +3,6 @@ session_start();
 
 require_once('db.php');
 
-//อนุมัติการจอง
-if (isset($_GET['approve'])) {
-    $approve_HN = $_GET['approve'];
-    $stmt = $conn->query("SELECT status FROM book WHERE HN =  $approve_HN");
-    $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $newStatus = $row['status'] == 'อนุมัติ' ? 'รออนุมัติ' : 'อนุมัติ';
-
-    $approvetmt = $conn->prepare("UPDATE book SET status = :newStatus WHERE HN = :approveHN");
-    $approvetmt->bindParam(':newStatus', $newStatus);
-    $approvetmt->bindParam(':approveHN',  $approve_HN);
-    $approvetmt->execute();
-
-    if ($approvetmt) {
-        $_SESSION['success'] = "Status has been changed successfully";
-        header("refresh:2; url=officer_approve.php");
-    }
-}
-
 //ลบข้อมูล
 if (isset($_GET['delete'])) {
     $delete_HN = $_GET['delete'];
@@ -43,7 +24,7 @@ if (isset($_GET['delete'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>อนุมัติการจอง</title>
+    <title>ประวัติการจอง</title>
 
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -83,9 +64,6 @@ if (isset($_GET['delete'])) {
             <li class="nav-item">
                 <a class="nav-link" href="officer_room.php"> ประเภทห้องพัก </a>
             </li>
-            <!--<li class="nav-item">
-                <a class="nav-link" href="officer_nroom.php"> สถานะห้องพัก </a>
-            </li>-->
             <li class="nav-item">
                 <a class="nav-link" href="officer_approve.php"> อนุมัติการจอง </a>
             </li>
@@ -105,7 +83,7 @@ if (isset($_GET['delete'])) {
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h3>อนุมัติการจอง</h3>
+                <h3>ประวัติการจอง</h3>
                 <hr style="width:204%; margin-left:0">
             </div>
 
@@ -135,8 +113,6 @@ if (isset($_GET['delete'])) {
                         <th scope="col">แผนก</th>
                         <th scope="col">ชื่อ-นามสกุล(ผู้จอง)</th>
                         <th scope="col">ประเภทห้องพัก</th>
-                        <th scope="col">สถานะการจอง</th>
-                        <th scope="col">จัดการ</th>
                     </tr>
                 </thead>
 
@@ -159,11 +135,8 @@ if (isset($_GET['delete'])) {
                                 <td><?php echo $rbook['Department']; ?></td>
                                 <td><?php echo $rbook['booked_by']; ?></td>
                                 <td><?php echo $rbook['room']; ?></td>
-                                <td><?php echo $rbook['Status']; ?></td>
-                                <td>
-                                    <a href="?approve=<?php echo $rbook['HN']; ?>" class="btn btn-info">อนุมัติ</a>
-                                    <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $rbook['HN']; ?>" class="btn btn-danger">ยกเลิกการจอง</a>
-                            </tr>
+                        
+                                   
                     <?php
                             $i++;
                         }

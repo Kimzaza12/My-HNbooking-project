@@ -101,6 +101,9 @@ if (!isset($_SESSION['officer_login'])) {
             <li class="nav-item">
                 <a class="nav-link" href="officer_approve.php"> อนุมัติการจอง </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="officer_history.php"> ประวัติการจอง </a>
+            </li>
             <div class="boxout">
                 <div class="endout">
                     <li class="nav-item">
