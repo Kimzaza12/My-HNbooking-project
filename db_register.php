@@ -8,7 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $HN = $_POST['HN'];
     $ID_number = $_POST['ID_number'];
     $S_name = $_POST['S_name'];
-    $Department = $_POST['Department'];
     $P_number = $_POST['P_number'];
     $Email = $_POST['Email'];
 
@@ -31,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // เพิ่มข้อมูลลงในตาราง "register"
-    $sql = "INSERT INTO register (HN, ID_number, S_name, Department,P_number, Email) VALUES ('$HN', '$ID_number', '$S_name', '$Department','$P_number', '$Email')";
+    $sql = "INSERT INTO register (HN, ID_number, S_name ,P_number, Email) VALUES ('$HN', '$ID_number', '$S_name','$P_number', '$Email')";
 
     if ($conn->query($sql) === TRUE) {
         $messagetrue1 = "ลงทะเบียนสำเร็จ";

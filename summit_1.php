@@ -91,8 +91,6 @@ require_once('db_join.php');
                             </div>
 
 
-
-
                             <div class="label_form">
                                 <label for="HN">รหัส HN ผู้เข้าพัก :</label>
                                 <input type="text" id="HN" name="HN" maxlength="10" onkeyup="searchHN()" placeholder="กรุณาใส่รหัส HN ที่ไม่เกิน 10 หลัก" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
@@ -120,6 +118,24 @@ require_once('db_join.php');
                                 <label for="Department">แผนก :</label>
                                 <input type="text" id="Department" name="Department" placeholder="แผนก" readonly><br><br>
                             </div>
+
+                            <div class="label_form2">
+                                <label for="Department">แผนก :</label>
+                                <select id="Department" name="Department">
+                                    <option value="" disabled selected>กรุณาเลือกแผนก</option>
+                                    <?php
+                                    $dp = $conn->query("SELECT * FROM department");
+                                    while ($dp_data = $dp->fetch_assoc()) {
+                                        $dp_name[$dp_data['d_id']] = $dp_data['d_name'];
+                                    ?>
+                                        <option value="<?php echo $dp_data['d_name'] ?>"><?php echo $dp_data['d_name'] ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                    
+                                </select><br><br>
+                            </div>
+
 
                             <div class="label_form">
                                 <label for="P_number">เบอร์โทรศัพท์ ผู้จอง :</label>

@@ -26,6 +26,7 @@ if (isset($_GET['delete'])) {
     <title>จัดการสมาชิก</title>
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/indexcss.css">
 </head>
 
@@ -61,24 +62,32 @@ if (isset($_GET['delete'])) {
                             <input type="text" required class="form-control" name="username">
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="col-form-label">Password:</label>
-                            <input type="text" required class="form-control" name="password">
-                        </div>
-                        <div class="form-group">
-                            <label for="level" class="col-form-label">ตำเเหน่ง:</label>
-                            <div class="mb-3">
-                                <select name="level" class="form-select">
-                                    <option value="" selected="selected"> โปรดเลือก...</option>
-                                    <option value="admin"> admin </option>
-                                    <option value="officer"> officer </option>
-                                </select>
+                            <div class="pass-cus">
+                                <label for="password" class="col-form-label">Password:</label>
+                                <input type="password" id="password" required class="form-control" name="password">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" onclick="password_show_hide();">
+                                        <i class="bi bi-eye-fill" id="show_eye"></i>
+                                        <i class="bi bi-eye-slash-fill d-none" id="hide_eye"></i>
+                                    </span>
+                                </div>
                             </div>
                         </div>
+                            <div class="form-group">
+                                <label for="level" class="col-form-label">ตำเเหน่ง:</label>
+                                <div class="mb-3">
+                                    <select name="level" class="form-select">
+                                        <option value="" selected="selected"> โปรดเลือก...</option>
+                                        <option value="admin"> admin </option>
+                                        <option value="officer"> officer </option>
+                                    </select>
+                                </div>
+                            </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" name="submit" class="btn btn-success">Submit</button>
-                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" name="submit" class="btn btn-success">Submit</button>
+                            </div>
                     </form>
                 </div>
 
@@ -178,6 +187,9 @@ if (isset($_GET['delete'])) {
     </div>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="JS/hidebutton.js"></script>
+
+
 </body>
 
 </html>

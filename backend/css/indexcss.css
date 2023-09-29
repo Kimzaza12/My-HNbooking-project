@@ -157,3 +157,7 @@ nav.sidebar hr {
     width: 95%;
     margin: auto;
 }
+
+.pass-cus{
+    display: flex;
+}

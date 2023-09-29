@@ -122,7 +122,7 @@ if (isset($_GET['delete'])) {
                 <a class="nav-link" href="officer_nroom.php"> สถานะห้องพัก </a>
             </li>-->
             <li class="nav-item">
-                <a class="nav-link" href="officer_approve.php"> อนุมัติการจอง </a>
+                <a class="nav-link" href="officer_approve.php"> ข้อมูลการจอง </a>
             </li>
             <div class="boxout">
                 <div class="endout">
