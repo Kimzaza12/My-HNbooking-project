@@ -89,7 +89,7 @@ if (isset($_GET['delete'])) {
     include("navbar.php")
     ?>
 
-<nav class="sidebar">
+    <nav class="sidebar">
         <ul class="nav flex-column">
             <hr>
             <div class="ad-name">
@@ -116,6 +116,9 @@ if (isset($_GET['delete'])) {
             </li>
             <div class="boxout">
                 <div class="endout">
+                    <li class="nav-item">
+                        <a class="nav-link" href="officer_profile.php"> เเก้ไขโปรไฟล์ </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login_page.php"> ออกจากระบบ </a>
                     </li>

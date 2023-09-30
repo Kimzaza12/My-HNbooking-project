@@ -43,8 +43,13 @@ session_start();
 
             <div class="input-field">
                 <i class="fa fa-lock"></i>
-                <input type="password" placeholder="Password" name="password">
+                <input type="password" placeholder="Password" id="password" required class="form-control" name="password">
+                <span class="eye-group" onclick="password_show_hide();">
+                    <e class="fa fa-eye" id="show_eye"></e>
+                    <e class="fa fa-eye-slash d-none" id="hide_eye"></e>
+                </span>
             </div>
+
 
             <button type="submit" name="submit">Sign in </button>
 
@@ -54,7 +59,7 @@ session_start();
 
         </form>
     </div>
-
+    <script src="JS/hidebutton.js"></script>
 </body>
 
 </html>

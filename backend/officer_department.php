@@ -97,13 +97,16 @@ if (isset($_GET['delete'])) {
             <div class="boxout">
                 <div class="endout">
                     <li class="nav-item">
+                        <a class="nav-link" href="officer_profile.php"> เเก้ไขโปรไฟล์ </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="login_page.php"> ออกจากระบบ </a>
                     </li>
                 </div>
             </div>
         </ul>
     </nav>
-    
+
     <div class="container">
         <div class="row">
             <div class="col-md-6">

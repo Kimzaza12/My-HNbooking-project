@@ -15,11 +15,7 @@ if (!isset($_SESSION['officer_login'])) {
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- style link -->
-
-
     <link rel="stylesheet" href="css/indexcss2.css">
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
@@ -79,40 +75,43 @@ if (!isset($_SESSION['officer_login'])) {
         </div>
 
         <!-- menu_left -->
-    <nav class="sidebar">
-        <ul class="nav flex-column">
-            <hr>
-            <div class="ad-name">
-                <h1> <?php echo  $row['m_firstname'] . ' ' . $row['m_lastname'] ?> </h1>
-            </div>
-            <hr>
-            <li class="nav-item">
-                <a class="nav-link" href="officer_index.php"> หน้าหลัก </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="officer_department.php"> แผนกผู้ป่วย </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="officer_room.php"> ประเภทห้องพัก </a>
-            </li>
-            <!--<li class="nav-item">
+        <nav class="sidebar">
+            <ul class="nav flex-column">
+                <hr>
+                <div class="ad-name">
+                    <h1> <?php echo  $row['m_firstname'] . ' ' . $row['m_lastname'] ?> </h1>
+                </div>
+                <hr>
+                <li class="nav-item">
+                    <a class="nav-link" href="officer_index.php"> หน้าหลัก </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="officer_department.php"> แผนกผู้ป่วย </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="officer_room.php"> ประเภทห้องพัก </a>
+                </li>
+                <!--<li class="nav-item">
                 <a class="nav-link" href="officer_nroom.php"> สถานะห้องพัก </a>
             </li>-->
-            <li class="nav-item">
-                <a class="nav-link" href="officer_approve.php"> ข้อมูลการจอง </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="officer_history.php"> ประวัติการจอง </a>
-            </li>
-            <div class="boxout">
-                <div class="endout">
-                    <li class="nav-item">
-                        <a class="nav-link" href="login_page.php"> ออกจากระบบ </a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="officer_approve.php"> ข้อมูลการจอง </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="officer_history.php"> ประวัติการจอง </a>
+                </li>
+                <div class="boxout">
+                    <div class="endout">
+                        <li class="nav-item">
+                            <a class="nav-link" href="officer_profile.php"> เเก้ไขโปรไฟล์ </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login_page.php"> ออกจากระบบ </a>
+                        </li>
+                    </div>
                 </div>
-            </div>
-        </ul>
-    </nav>
+            </ul>
+        </nav>
 
 </body>
 

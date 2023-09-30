@@ -8,6 +8,7 @@ if (isset($_POST['update'])) {
     $r_type = $_POST['rtype'];
     $r_price = $_POST['rprice'];
     $r_img = $_FILES['img'];
+    $r_num = $_POST['rnum'];
 
     $img2 = $_POST['img2'];
     $upload = $_FILES['img']['name'];
@@ -28,11 +29,12 @@ if (isset($_POST['update'])) {
         $fileNew = $img2;
     }
 
-    $sql = $conn->prepare("UPDATE room_type SET rt_type = :rtype, rt_price = :rprice, rt_img = :img WHERE rt_id = :rid");
+    $sql = $conn->prepare("UPDATE room_type SET rt_type = :rtype, rt_price = :rprice, rt_img = :img, rt_num = :rnum WHERE rt_id = :rid");
     $sql->bindParam(":rid", $rt_id);
     $sql->bindParam(":rtype", $r_type);
     $sql->bindParam(":rprice", $r_price);
     $sql->bindParam(":img", $fileNew);
+    $sql->bindParam(":rnum", $r_num);
     $sql->execute();
 
     if ($sql) {
@@ -83,12 +85,16 @@ if (isset($_POST['update'])) {
             </div>
             <div class="mb-3">
                 <label for="price" class="col-form-label">ราคาต่อคืน(บาท):</label>
-                <input type="text" value="<?php echo $data['rt_price']; ?>" required class="form-control" name="rprice">
+                <input type="number" value="<?php echo $data['rt_price']; ?>" required class="form-control" name="rprice">
             </div>
             <div class="mb-3">
                 <label for="img" class="col-form-label">รูป:</label>
                 <input type="file" class="form-control" id="imgInput" name="img">
                 <img width="65%" src="uploads/<?php echo $data['rt_img']; ?>" id="previewImg" alt="">
+            </div>
+            <div class="mb-3">
+                <label for="num" class="col-form-label">จำนวนห้องพัก:</label>
+                <input type="number" value="<?php echo $data['rt_num']; ?>" required class="form-control" name="rnum">
             </div>
             <hr>
             <a href="officer_room.php" class="btn btn-secondary">Go Back</a>

@@ -63,12 +63,16 @@ if (isset($_GET['delete'])) {
                         </div>
                         <div class="mb-3">
                             <label for="price" class="col-form-label">ราคาต่อคืน(บาท):</label>
-                            <input type="text" required class="form-control" name="rprice">
+                            <input type="number" required class="form-control" name="rprice">
                         </div>
                         <div class="mb-3">
                             <label for="img" class="col-form-label">รูป:</label>
                             <input type="file" required class="form-control" id="imgInput" name="img">
                             <img loading="lazy" width="100%" id="previewImg" alt="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="num" class="col-form-label">จำนวนห้องพัก:</label>
+                            <input type="number" required class="form-control" name="rnum">
                         </div>
 
                         <div class="modal-footer">
@@ -109,6 +113,9 @@ if (isset($_GET['delete'])) {
             </li>
             <div class="boxout">
                 <div class="endout">
+                    <li class="nav-item">
+                        <a class="nav-link" href="officer_profile.php"> เเก้ไขโปรไฟล์ </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login_page.php"> ออกจากระบบ </a>
                     </li>
@@ -152,6 +159,7 @@ if (isset($_GET['delete'])) {
                     <th scope="col">ประเภทของห้องพัก</th>
                     <th scope="col">ราคาต่อคืน(บาท)</th>
                     <th scope="col">รูป</th>
+                    <th scope="col">จำนวนห้องพัก</th>
                     <th scope="col">จัดการ</th>
                 </tr>
             </thead>
@@ -173,6 +181,7 @@ if (isset($_GET['delete'])) {
                             <td><?php echo $roomt['rt_type']; ?></td>
                             <td><?php echo $roomt['rt_price']; ?></td>
                             <td width="225px"><img class="rounded" width="100%" src="uploads/<?php echo $roomt['rt_img']; ?>" alt=""></td>
+                            <td><?php echo $roomt['rt_num']; ?></td>
                             <td>
                                 <a href="room_edit.php?rt_id=<?php echo $roomt['rt_id']; ?>" class="btn btn-warning">แก้ไขข้อมูล</a>
                                 <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $roomt['rt_id']; ?>" class="btn btn-danger">ลบข้อมูล</a>
@@ -186,7 +195,6 @@ if (isset($_GET['delete'])) {
         </table>
     </div>
 
-
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
@@ -199,6 +207,28 @@ if (isset($_GET['delete'])) {
                 previewImg.src = URL.createObjectURL(file)
             }
         }
+    </script>
+    <script>
+        // ฟังก์ชันเมื่อครบ 1 วิ ให้ปุ่มเเจ้ง update หายไป
+        function hideMessages() {
+            var successAlert = document.querySelector(".alert-success");
+            var errorAlert = document.querySelector(".alert-danger");
+
+            if (successAlert) {
+                setTimeout(function() {
+                    successAlert.style.display = "none";
+                }, 1000);
+            }
+
+            if (errorAlert) {
+                setTimeout(function() {
+                    errorAlert.style.display = "none";
+                }, 1000);
+            }
+        }
+        window.onload = function() {
+            hideMessages();
+        };
     </script>
 </body>
 

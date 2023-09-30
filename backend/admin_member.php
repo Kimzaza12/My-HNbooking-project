@@ -108,9 +108,11 @@ if (isset($_GET['delete'])) {
             <li class="nav-item">
                 <a class="nav-link" href="admin_member.php"> จัดการสมาชิก </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="login_page.php"> ออกจากระบบ </a>
-            </li>
+            <div class="boxout2">
+                <li class="nav-item">
+                    <a class="nav-link" href="login_page.php"> ออกจากระบบ </a>
+                </li>
+            </div>
         </ul>
     </nav>
 
