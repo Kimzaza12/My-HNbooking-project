@@ -82,6 +82,7 @@ require_once('db_connection.php');
                             $rt_type = $row['rt_type'];
                             $rt_price = $row['rt_price'];
                             $rt_img = $row['rt_img'];
+                            $rt_num = $row['rt_num'];
                             $empty_rooms = $row['empty_rooms'];
 
                             $roomClass = $firstRoom ? 'show' : ''; // ให้กำหนดคลาส 'show' เฉพาะห้องแรก
@@ -100,7 +101,7 @@ require_once('db_connection.php');
                                     <div class="dataone">
                                         <div class="boxdataall">
                                             <div class="boxdata">
-                                                <p>จำนวนห้องว่าง : <?= $empty_rooms; ?> </p>
+                                                <p>จำนวนห้องว่าง : <?= $rt_num; ?> </p>
                                             </div>
 
                                             <div class="boxdatasmall">
@@ -128,9 +129,7 @@ require_once('db_connection.php');
                             </div>
 
                         <?php
-
                         }
-
                         ?>
 
 

@@ -33,10 +33,11 @@ if (!isset($_SESSION['officer_login'])) {
     $row = $result->fetch(PDO::FETCH_ASSOC);
     $totalApporve = $row['total_approve'];
 
-    $sql = "SELECT COUNT(rn_id) AS total_room FROM room_num WHERE rn_status = 'ห้องว่าง'";
+    $sql = "SELECT SUM(rt_num) AS total_rooms FROM room_type";
     $result = $conn->query($sql);
     $row = $result->fetch(PDO::FETCH_ASSOC);
-    $totalRoom = $row['total_room'];
+    $totalRooms = $row['total_rooms'];
+    
 
     // เมื่อ login เข้ามาเเล้วให้นำข้อมูลของตาราง member จาก Database มาใช้งานในหน้าเว็บ 
     if (isset($_SESSION['officer_login'])) {
@@ -58,7 +59,7 @@ if (!isset($_SESSION['officer_login'])) {
                 <div class="box2">
                     <img src="/code/backend/images/bed.png">
                     <div class="textbox2">
-                        <h2> <?php echo $totalRoom; ?> </h2>
+                        <h2> <?php echo $totalRooms; ?> </h2>
                         <a> จำนวนห้องว่าง </a>
                     </div>
                 </div>

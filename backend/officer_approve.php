@@ -22,6 +22,7 @@ if (isset($_GET['approve'])) {
     }
 }
 
+//ยกเลิกการจอง
 if (isset($_GET['delete'])) {
     $delete_HN = $_GET['delete'];
 
@@ -190,6 +191,7 @@ if (isset($_GET['delete'])) {
                                 <td>
                                     <a href="?approve=<?php echo $rbook['HN']; ?>" class="btn btn-info">อนุมัติ</a>
                                     <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $rbook['HN']; ?>" class="btn btn-danger">ยกเลิกการจอง</a>
+                                    <a href="?finish=<?php echo $rbook['HN']; ?>" class="btn btn-success">เสร็จสิ้นการจอง</a>
                             </tr>
                     <?php
                             $i++;

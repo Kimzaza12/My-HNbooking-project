@@ -104,6 +104,7 @@ require_once('db.php');
                         <th scope="col">แผนก</th>
                         <th scope="col">ชื่อ-นามสกุล(ผู้จอง)</th>
                         <th scope="col">ห้องพัก</th>
+                        <th scope="col">สถานะ</th>
                     </tr>
                 </thead>
 
@@ -127,6 +128,7 @@ require_once('db.php');
                                 <td><?php echo $ht['h_dp']; ?></td>
                                 <td><?php echo $ht['h_book']; ?></td>
                                 <td><?php echo $ht['h_room']; ?></td>
+                                <td><?php echo $ht['h_status']; ?></td>
                         <?php
                             $i++;
                         }
