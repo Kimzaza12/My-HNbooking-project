@@ -1,7 +1,8 @@
 <?php
 require_once('dbcon.php');
+
 require_once('db_submit.php');
-require_once('db_join.php');
+//require_once('db_join.php');
 ?>
 
 
@@ -58,8 +59,6 @@ require_once('db_join.php');
         </div>
 
 
-
-
         <div class="backg">
 
             <div class="boxregis">
@@ -74,7 +73,7 @@ require_once('db_join.php');
 
                     <div class="allform_label">
                         <form action="db_submit.php" method="post" onsubmit="return validateForm()">
-                        
+
                             <div class="label_form3">
                                 <label for="room">ประเภทห้องพัก :</label>
                                 <input type="text" id="room" name="room" readonly value="">
@@ -114,14 +113,9 @@ require_once('db_join.php');
                                 <input type="text" id="booked_by" name="booked_by" placeholder="กรุณาใส่ชื่อผู้จอง"><br><br>
                             </div>
 
-                            <div class="label_form2">
+                            <div class="label_form">
                                 <label for="Department">แผนก :</label>
-                                <input type="text" id="Department" name="Department" placeholder="แผนก" readonly><br><br>
-                            </div>
-
-                            <div class="label_form2">
-                                <label for="Department">แผนก :</label>
-                                <select id="Department" name="Department">
+                                <select id="Department" name="Department" >
                                     <option value="" disabled selected>กรุณาเลือกแผนก</option>
                                     <?php
                                     $dp = $conn->query("SELECT * FROM department");
@@ -132,10 +126,9 @@ require_once('db_join.php');
                                     <?php
                                     }
                                     ?>
-                                    
+
                                 </select><br><br>
                             </div>
-
 
                             <div class="label_form">
                                 <label for="P_number">เบอร์โทรศัพท์ ผู้จอง :</label>
@@ -176,8 +169,6 @@ require_once('db_join.php');
 
 
         </div>
-
-
 
         <script src="Js/script3.js"></script>
         <script src="Js/script5.js"></script>

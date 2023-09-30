@@ -26,8 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // รับค่า HN จากฟอร์ม
         $hn = $_POST['HN'];
 
-
-
         // คำสั่ง SQL เพื่อตรวจสอบการจอง
         $sql = "SELECT * FROM book WHERE HN = '$hn'";
 

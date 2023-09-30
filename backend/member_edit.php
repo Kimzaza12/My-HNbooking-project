@@ -40,7 +40,10 @@ if (isset($_POST['update'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Member Data</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/memberEditCSS.css">
 
     <style>
         .container {
@@ -76,9 +79,17 @@ if (isset($_POST['update'])) {
                 <label for="username" class="col-form-label">Username:</label>
                 <input type="text" value="<?php echo $data['m_username']; ?>" required class="form-control" name="username">
             </div>
-            <div class="mb-3">
+            <div class="mb-3 pass-table">
                 <label for="password" class="col-form-label">Password:</label>
-                <input type="text" value="<?php echo $data['m_password']; ?>" required class="form-control" name="password">
+                <div class="pass-cus">
+                    <input type="password" value="<?php echo $data['m_password']; ?>" required class="form-control" id="password" name="password">
+                    <div class="input-group-append">
+                        <span class="input-group-text" onclick="password_show_hide();">
+                            <i class="bi bi-eye-fill" id="show_eye"></i>
+                            <i class="bi bi-eye-slash-fill d-none" id="hide_eye"></i>
+                        </span>
+                    </div>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="level" class="col-form-label">ตำแหน่ง:</label>
@@ -93,6 +104,10 @@ if (isset($_POST['update'])) {
             <button type="submit" name="update" class="btn btn-primary">Update</button>
         </form>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="JS/hidebutton.js"></script>
+
 </body>
 
 </html>
