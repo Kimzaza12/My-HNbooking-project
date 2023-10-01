@@ -200,10 +200,11 @@ if (isset($_GET['finish'])) {
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h3>จัดการข้อมูลการจอง</h3>
-                <hr style="width:204%; margin-left:0">
-            </div>
+
+                <div class="texthh">
+                    <h3>จัดการข้อมูลการจอง</h3>
+                    <hr>
+                </div>
 
             <?php if (isset($_SESSION['success'])) { ?>
                 <div class="alert alert-success">

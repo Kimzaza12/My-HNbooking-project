@@ -112,64 +112,68 @@ if (isset($_GET['delete'])) {
             <div class="col-md-6">
                 <h3>จัดการแผนกผู้ป่วย</h3>
             </div>
+
             <div class="col-md-6 d-flex justify-content-end">
                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#userModal" data-bs-whatever="@mdo">เพิ่มแผนกผู้ป่วย</button>
             </div>
+            <div class="hrr">
+                <hr>
+            </div>
+
+
+            <?php if (isset($_SESSION['success'])) { ?>
+                <div class="alert alert-success">
+                    <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']);
+                    ?>
+                </div>
+            <?php } ?>
+            <?php if (isset($_SESSION['error'])) { ?>
+                <div class="alert alert-danger">
+                    <?php
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                    ?>
+                </div>
+            <?php } ?>
+            <table class="table table-bordered small-table3">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ชื่อแผนก</th>
+                        <th scope="col">จัดการ</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php
+                    $stmt = $conn->query("SELECT * FROM department");
+                    $stmt->execute();
+                    $department = $stmt->fetchAll();
+
+                    if (!$department) {
+                        echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                    } else {
+                        $i = 1;
+                        foreach ($department as $dp) {
+                    ?>
+                            <tr>
+                                <td> <?php echo $i; ?> </td>
+                                <td><?php echo $dp['d_name']; ?></td>
+
+                                <td>
+                                    <a href="department_edit.php?d_id=<?php echo $dp['d_id']; ?>" class="btn btn-warning">แก้ไขข้อมูล</a>
+                                    <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $dp['d_id']; ?>" class="btn btn-danger">ลบข้อมูล</a>
+                            </tr>
+                    <?php
+                            $i++;
+                        }
+                    } ?>
+                </tbody>
+
+            </table>
         </div>
-        <hr>
-        <?php if (isset($_SESSION['success'])) { ?>
-            <div class="alert alert-success">
-                <?php
-                echo $_SESSION['success'];
-                unset($_SESSION['success']);
-                ?>
-            </div>
-        <?php } ?>
-        <?php if (isset($_SESSION['error'])) { ?>
-            <div class="alert alert-danger">
-                <?php
-                echo $_SESSION['error'];
-                unset($_SESSION['error']);
-                ?>
-            </div>
-        <?php } ?>
-
-        <table class="table table-bordered small-table2">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">ชื่อแผนก</th>
-                    <th scope="col">จัดการ</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <?php
-                $stmt = $conn->query("SELECT * FROM department");
-                $stmt->execute();
-                $department = $stmt->fetchAll();
-
-                if (!$department) {
-                    echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
-                } else {
-                    $i = 1;
-                    foreach ($department as $dp) {
-                ?>
-                        <tr>
-                            <td> <?php echo $i; ?> </td>
-                            <td><?php echo $dp['d_name']; ?></td>
-
-                            <td>
-                                <a href="department_edit.php?d_id=<?php echo $dp['d_id']; ?>" class="btn btn-warning">แก้ไขข้อมูล</a>
-                                <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $dp['d_id']; ?>" class="btn btn-danger">ลบข้อมูล</a>
-                        </tr>
-                <?php
-                        $i++;
-                    }
-                } ?>
-            </tbody>
-
-        </table>
     </div>
 
 

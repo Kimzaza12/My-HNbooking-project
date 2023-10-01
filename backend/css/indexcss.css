@@ -5,11 +5,11 @@ body{
 .container{
     margin-right: 0.25rem;
     margin-top: 5rem;
+
 }
 
 .ct2{
-    padding-left: 250px;
-    margin-right: 0.75rem;
+    padding-left: 210px;
     margin-top: 5rem;
     padding-bottom: 30px;
 }
@@ -17,7 +17,16 @@ body{
 div.container div.row h1 {
     margin-top: 15px;
     text-align: center;
+    
 }
+
+.row{
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    justify-content: center;
+}
+
 
 .box1 {
     background-color: #9d9d9d;
@@ -126,10 +135,93 @@ nav.sidebar hr {
 
 .small-table {
     font-size: 15px;
-    width: 95%;
+    width: 80%;
     margin: auto;
+
 }
+
+
+
+
+
 
 .pass-cus{
     display: flex;
 }
+
+.small-table3 {
+    font-size: 15px;
+    width: 80%;
+    margin: auto;
+}
+
+.small-table4 {
+    font-size: 15px;
+    width: 60%;
+    margin: auto;
+    float: right;
+    max-width: 340px;
+}
+
+
+.search-text {
+    width: auto;
+    justify-content: center;
+
+}
+
+
+
+.texthh{
+    width: 100%;
+    padding: 0px;
+    
+}
+
+
+
+.text-end{
+    display: flex;
+    width: 310px;
+    float: right;
+}
+
+div.textsearch{
+    margin-top: 50px;
+
+
+    width: auto;
+    height: auto;
+}
+
+
+div.alltt{
+    width: auto;
+    height:auto;
+    display: flex;
+    position: absolute;
+}
+
+
+div.col-md-6.search-text{
+    padding: 0px;
+}
+
+.textsearch{
+    width: auto;
+    padding-right: 50px;
+    
+}
+
+
+.hrr{
+    padding: 0px;
+}
+
+
+div.col-md-6{
+    padding: 0px;
+    
+}
+
+

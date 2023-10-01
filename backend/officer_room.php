@@ -127,14 +127,20 @@ if (isset($_GET['delete'])) {
 
     <div class="ct2">
         <div class="row">
+            
             <div class="col-md-6">
                 <h3>จัดการประเภทห้องพัก</h3>
             </div>
             <div class="col-md-6 d-flex justify-content-end">
                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#userModal" data-bs-whatever="@mdo">เพิ่มประเภทห้องพัก</button>
             </div>
+
+            <div class="hrr">
+                <hr>
+            </div>
+
         </div>
-        <hr>
+
         <?php if (isset($_SESSION['success'])) { ?>
             <div class="alert alert-success">
                 <?php
