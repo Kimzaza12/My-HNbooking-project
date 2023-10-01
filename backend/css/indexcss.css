@@ -175,7 +175,10 @@ nav.sidebar hr {
 .texthh{
     width: 100%;
     padding: 0px;
-    
+    display: flex;
+    justify-content: center;
+
+    display: block;
 }
 
 
@@ -190,17 +193,9 @@ div.textsearch{
     margin-top: 50px;
 
 
-    width: auto;
-    height: auto;
 }
 
 
-div.alltt{
-    width: auto;
-    height:auto;
-    display: flex;
-    position: absolute;
-}
 
 
 div.col-md-6.search-text{
@@ -208,9 +203,7 @@ div.col-md-6.search-text{
 }
 
 .textsearch{
-    width: auto;
-    padding-right: 50px;
-    
+    padding-right: 126px;
 }
 
 
@@ -222,6 +215,22 @@ div.col-md-6.search-text{
 div.col-md-6{
     padding: 0px;
     
+}
+
+.search-container{
+    width: 340px;
+
+}
+
+
+div.d{
+    width: auto;
+    height: auto;
+}
+
+div.d{
+    width: auto;
+    height: auto;
 }
 
 

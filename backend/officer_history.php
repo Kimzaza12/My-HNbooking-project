@@ -80,10 +80,12 @@ require_once('db.php');
                     <hr>
                 </div>
 
-                <div class="col-md-6 text-end">
-                    <div class="input-group mb-3 search-container">
-                        <input type="text" class="form-control" placeholder="กรุณากรอกข้อความที่ต้องการค้นหา" id="searchInput">
-                        <button class="btn btn-primary" onclick="searchHistory()">ค้นหา</button>
+                <div class="textsearch">
+                    <div class="col-md-6 text-end">
+                        <div class="input-group mb-3 search-container">
+                            <input type="text" class="form-control" placeholder="กรุณากรอกข้อความที่ต้องการค้นหา" id="searchInput">
+                            <button class="btn btn-primary" onclick="searchHistory()">ค้นหา</button>
+                        </div>
                     </div>
                 </div>
 
@@ -113,83 +115,73 @@ require_once('db.php');
 
             <table class="table table-bordered small-table">
 
-                <div class="textsearch">
+
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">HN ผู้ป่วย</th>
+                        <th scope="col">รหัสบัตรประชาชน</th>
+                        <th scope="col">ชื่อ-นามสกุล(ผู้ป่วย)</th>
+                        <th scope="col">แผนก</th>
+                        <th scope="col">ชื่อ-นามสกุล(ผู้จอง)</th>
+                        <th scope="col">ห้องพัก</th>
+                        <th scope="col">สถานะ</th>
+                    </tr>
+                </thead>
 
 
-                </div>
 
-                <div class="alltt">
+                <tbody>
+
+                    <?php
+                    
+                    $stmt = $conn->query("SELECT * FROM history");
+                    $stmt->execute();
+                    $history = $stmt->fetchAll();
 
 
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">HN ผู้ป่วย</th>
-                            <th scope="col">รหัสบัตรประชาชน</th>
-                            <th scope="col">ชื่อ-นามสกุล(ผู้ป่วย)</th>
-                            <th scope="col">แผนก</th>
-                            <th scope="col">ชื่อ-นามสกุล(ผู้จอง)</th>
-                            <th scope="col">ห้องพัก</th>
-                            <th scope="col">สถานะ</th>
-                        </tr>
-                    </thead>
+                    if (!$history) {
+                        echo "<p><td colspan='8' class='text-center'>No data available</td></p>";
+                    } else {
+                        $i = 1;
+                        foreach ($history as $ht) {
+                            $status = $ht['h_status'];
 
-                    <tbody>
-                        <?php
-                        $stmt = $conn->query("SELECT * FROM history");
-                        $stmt->execute();
-                        $history = $stmt->fetchAll();
-
-                        if (!$history) {
-                            echo "<p><td colspan='8' class='text-center'>No data available</td></p>";
-                        } else {
-                            $i = 1;
-                            foreach ($history as $ht) {
-                                $status = $ht['h_status'];
-
-                                // ตรวจสอบสถานะและกำหนดสีตามที่คุณต้องการ
-                                if ($status == 'รออนุมัติ') {
-                                    $statusColor = 'red'; // สีแดงสำหรับรออนุมัติ
-                                    $statusText = 'ยกเลิกการจอง';
-                                } else if ($status == 'เสร็จสิ้นการจอง') {
-                                    $statusColor = 'green'; // สีแดงสำหรับรออนุมัติ
-                                    $statusText = 'เสร็จสิ้นการจอง';
-                                } else {
-                                    $statusColor = ''; // ไม่มีสีพิเศษสำหรับสถานะอื่น
-                                    $statusText = $status;
-                                }
-                        ?>
-                                <tr>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $ht['h_HN']; ?></td>
-                                    <td><?php echo $ht['h_idnum']; ?></td>
-                                    <td><?php echo $ht['h_name']; ?></td>
-                                    <td><?php echo $ht['h_dp']; ?></td>
-                                    <td><?php echo $ht['h_book']; ?></td>
-                                    <td><?php echo $ht['h_room']; ?></td>
-                                    <td style="color: <?php echo $statusColor; ?>"><?php echo $statusText; ?></td>
-                                </tr>
-                        <?php
-                                $i++;
+                            // ตรวจสอบสถานะและกำหนดสีตามที่คุณต้องการ
+                            if ($status == 'รออนุมัติ') {
+                                $statusColor = 'red'; // สีแดงสำหรับรออนุมัติ
+                                $statusText = 'ยกเลิกการจอง';
+                            } else if ($status == 'เสร็จสิ้นการจอง') {
+                                $statusColor = 'green'; // สีแดงสำหรับรออนุมัติ
+                                $statusText = 'เสร็จสิ้นการจอง';
+                            } else {
+                                $statusColor = ''; // ไม่มีสีพิเศษสำหรับสถานะอื่น
+                                $statusText = $status;
                             }
+                    ?>
+                            <tr>
+                                <td><?php echo $i; ?></td>
+                                <td><?php echo $ht['h_HN']; ?></td>
+                                <td><?php echo $ht['h_idnum']; ?></td>
+                                <td><?php echo $ht['h_name']; ?></td>
+                                <td><?php echo $ht['h_dp']; ?></td>
+                                <td><?php echo $ht['h_book']; ?></td>
+                                <td><?php echo $ht['h_room']; ?></td>
+                                <td style="color: <?php echo $statusColor; ?>"><?php echo $statusText; ?></td>
+                            </tr>
+                    <?php
+                            $i++;
                         }
-                        ?>
-                    </tbody>
-
+                    }
+                    ?>
+                </tbody>
 
             </table>
         </div>
-    </div>
-    </div>
 
 
-
-
-
-
-
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>
