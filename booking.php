@@ -100,9 +100,13 @@ require_once('db_connection.php');
                                 <div class="dataroom">
                                     <div class="dataone">
                                         <div class="boxdataall">
+
                                             <div class="boxdata">
-                                                <p>จำนวนห้องว่าง : <?= $rt_num; ?> </p>
+                                                    <p>จำนวนห้องว่าง : <?= $rt_num; ?> </p>
                                             </div>
+
+
+
 
                                             <div class="boxdatasmall">
                                                 <p>ราคา <?= $rt_price; ?> / คืน</p>
@@ -118,11 +122,15 @@ require_once('db_connection.php');
                                                 </div>
                                             <?php } ?>
 
+
                                             <?php if ($empty_rooms <= 0) { ?>
                                                 <div class="boxdatablacksmallsos">
                                                     <p>ห้องพักเต็ม</p>
                                                 </div>
                                             <?php } ?>
+
+
+
                                         </div>
                                     </div>
                                 </div>

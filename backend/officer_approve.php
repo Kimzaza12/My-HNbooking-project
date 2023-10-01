@@ -6,22 +6,51 @@ require_once('db.php');
 //อนุมัติการจอง
 if (isset($_GET['approve'])) {
     $approve_HN = $_GET['approve'];
-    $stmt = $conn->query("SELECT status FROM book WHERE HN =  $approve_HN");
-    $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $newStatus = $row['status'] == 'อนุมัติ' ? 'รออนุมัติ' : 'อนุมัติ';
 
-    $approvetmt = $conn->prepare("UPDATE book SET status = :newStatus WHERE HN = :approveHN");
-    $approvetmt->bindParam(':newStatus', $newStatus);
-    $approvetmt->bindParam(':approveHN',  $approve_HN);
-    $approvetmt->execute();
+    // ดึงข้อมูลการจองที่ต้องการอัปเดต
+    $selectstmt = $conn->prepare("SELECT * FROM book WHERE HN = ?");
+    $selectstmt->bindParam(1, $approve_HN, PDO::PARAM_STR);
+    $selectstmt->execute();
+    $result = $selectstmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($approvetmt) {
-        $_SESSION['success'] = "Status has been changed successfully";
-        header("refresh:2; url=officer_approve.php");
+    if ($result) {
+        $newStatus = $result['Status'] == 'อนุมัติ' ? 'รออนุมัติ' : 'อนุมัติ';
+
+        // อัปเดตสถานะการจอง
+        $approvetmt = $conn->prepare("UPDATE book SET status = :newStatus WHERE HN = :approveHN");
+        $approvetmt->bindParam(':newStatus', $newStatus);
+        $approvetmt->bindParam(':approveHN', $approve_HN);
+        $approvetmt->execute();
+
+        // ดึงข้อมูลจำนวนห้องว่างในตาราง room_type สำหรับห้องพักที่ถูกจอง
+        $selectRoomStmt = $conn->prepare("SELECT rt_num FROM room_type WHERE rt_type = :rt_type");
+        $selectRoomStmt->bindParam(':rt_type', $result['room']);
+        $selectRoomStmt->execute();
+        $roomData = $selectRoomStmt->fetch(PDO::FETCH_ASSOC);
+        $rt_num = $roomData['rt_num'];
+
+        // ตรวจสอบสถานะเพื่อลดหรือเพิ่ม rt_num ตามที่คุณต้องการ
+        if ($newStatus == 'อนุมัติ') {
+            $rt_num--; // ลดจำนวนห้องว่างลง 1
+        } elseif ($newStatus == 'รออนุมัติ') {
+            $rt_num++; // เพิ่มจำนวนห้องว่างขึ้น 1
+        }
+
+        // ทำการอัปเดตจำนวนห้องว่างในฐานข้อมูลห้องพัก
+        $updateRoomStmt = $conn->prepare("UPDATE room_type SET rt_num = :rt_num WHERE rt_type = :rt_type");
+        $updateRoomStmt->bindParam(':rt_num', $rt_num);
+        $updateRoomStmt->bindParam(':rt_type', $result['room']);
+        $updateRoomStmt->execute();
+
+        // ตรวจสอบความสำเร็จและเปลี่ยนเส้นทาง
+        if ($approvetmt && $updateRoomStmt) {
+            $_SESSION['success'] = "Status has been changed successfully";
+            header("refresh:2; url=officer_approve.php");
+        }
+    } else {
+        echo "<script>alert('Data not found');</script>";
     }
 }
-
 //ยกเลิกการจอง
 if (isset($_GET['delete'])) {
     $delete_HN = $_GET['delete'];
