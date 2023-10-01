@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
         if (in_array($fileActExt, $allow)) {
             if ($r_img['size'] > 0 && $r_img['error'] == 0) {
                 if (move_uploaded_file($r_img['tmp_name'], $filePath)) {
-                    $sql = $conn->prepare("INSERT INTO room_type(rt_type, rt_price, rt_img) VALUES(:rtype, :rprice, :rimg, :rnum)");
+                    $sql = $conn->prepare("INSERT INTO room_type(rt_type, rt_price, rt_img, rt_num) VALUES(:rtype, :rprice, :rimg, :rnum)");
                     $sql->bindParam(":rtype", $r_type);
                     $sql->bindParam(":rprice", $r_price);
                     $sql->bindParam(":rimg", $fileNew);
