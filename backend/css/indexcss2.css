@@ -58,15 +58,31 @@ div.container div.row h1 {
 
 .textbox2{
     color: #DEDEDE;
+    width: auto;
+    height: auto;
+    justify-content: center;
 }
 
 .textbox2 h2{
+    display: block;
     font-size: 80px;
+    text-align: right;
     font-family: 'Noto Sans Thai', sans-serif;
 }
 
 .textbox2 a{
+
     font-family: 'Noto Sans Thai', sans-serif;
+}
+
+.textr{
+    display: flex;
+    justify-content: center;
+}
+
+.texta{
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -74,9 +90,6 @@ div.textbox1 {
     padding-right: 45px;
 }
 
-div.textbox2 {
-    padding-right: 15px;
-}
 
 
 .sidebar {

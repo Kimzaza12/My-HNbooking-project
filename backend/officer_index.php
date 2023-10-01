@@ -37,7 +37,7 @@ if (!isset($_SESSION['officer_login'])) {
     $result = $conn->query($sql);
     $row = $result->fetch(PDO::FETCH_ASSOC);
     $totalRooms = $row['total_rooms'];
-    
+
 
     // เมื่อ login เข้ามาเเล้วให้นำข้อมูลของตาราง member จาก Database มาใช้งานในหน้าเว็บ 
     if (isset($_SESSION['officer_login'])) {
@@ -59,8 +59,17 @@ if (!isset($_SESSION['officer_login'])) {
                 <div class="box2">
                     <img src="/code/backend/images/bed.png">
                     <div class="textbox2">
-                        <h2> <?php echo $totalRooms; ?> </h2>
-                        <a> จำนวนห้องว่าง </a>
+
+
+                        <div class="textr">
+                            <h2> <?php echo $totalRooms; ?> </h2>
+                        </div>
+
+
+                        <div class="texta">
+                            <a> จำนวนห้องว่าง </a>
+                        </div>
+
                     </div>
                 </div>
 
@@ -68,8 +77,14 @@ if (!isset($_SESSION['officer_login'])) {
                 <div class="box4">
                     <img src="/code/backend/images/booking.png">
                     <div class="textbox2">
-                        <h2> <?php echo $totalApporve; ?> </h2>
-                        <a> รออนุมัติ </a>
+                        <div class="textr">
+                            <h2> <?php echo $totalApporve; ?> </h2>
+                        </div>
+                        <div class="texta">
+                            <a> รออนุมัติ </a>
+                        </div>
+
+
                     </div>
                 </div>
             </div>

@@ -189,9 +189,14 @@ if (isset($_GET['delete'])) {
                                 <td><?php echo $rbook['room']; ?></td>
                                 <td><?php echo $rbook['Status']; ?></td>
                                 <td>
-                                    <a href="?approve=<?php echo $rbook['HN']; ?>" class="btn btn-info">อนุมัติ</a>
-                                    <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $rbook['HN']; ?>" class="btn btn-danger">ยกเลิกการจอง</a>
-                                    <a href="?finish=<?php echo $rbook['HN']; ?>" class="btn btn-success">เสร็จสิ้นการจอง</a>
+                                    <?php if ($rbook['Status'] == 'รออนุมัติ') { ?>
+                                        <a href="?approve=<?php echo $rbook['HN']; ?>" class="btn btn-info">อนุมัติ</a>
+                                        <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $rbook['HN']; ?>" class="btn btn-danger">ยกเลิกการจอง</a>
+                                    <?php } elseif ($rbook['Status'] == 'อนุมัติ') { ?>
+                                        <a href="?approve=<?php echo $rbook['HN']; ?>" class="btn btn-info">อนุมัติ</a>
+                                        <a href="?finish=<?php echo $rbook['HN']; ?>" class="btn btn-success">เสร็จสิ้นการจอง</a>
+                                    <?php } ?>
+                                </td>
                             </tr>
                     <?php
                             $i++;
