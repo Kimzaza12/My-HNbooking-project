@@ -119,20 +119,35 @@ require_once('db.php');
                     } else {
                         $i = 1;
                         foreach ($history as $ht) {
+                            $status = $ht['h_status'];
+
+                            // ตรวจสอบสถานะและกำหนดสีตามที่คุณต้องการ
+                            if ($status == 'รออนุมัติ') {
+                                $statusColor = 'red'; // สีแดงสำหรับรออนุมัติ
+                                $statusText = 'ยกเลิกการจอง';
+                            } else if ($status == 'เสร็จสิ้นการจอง') {
+                                $statusColor = 'green'; // สีแดงสำหรับรออนุมัติ
+                                $statusText = 'เสร็จสิ้นการจอง';
+                            } else {
+                                $statusColor = ''; // ไม่มีสีพิเศษสำหรับสถานะอื่น
+                                $statusText = $status;
+                            }
                     ?>
                             <tr>
-                                <td> <?php echo $i; ?> </td>
+                                <td><?php echo $i; ?></td>
                                 <td><?php echo $ht['h_HN']; ?></td>
                                 <td><?php echo $ht['h_idnum']; ?></td>
                                 <td><?php echo $ht['h_name']; ?></td>
                                 <td><?php echo $ht['h_dp']; ?></td>
                                 <td><?php echo $ht['h_book']; ?></td>
                                 <td><?php echo $ht['h_room']; ?></td>
-                                <td><?php echo $ht['h_status']; ?></td>
-                        <?php
+                                <td style="color: <?php echo $statusColor; ?>"><?php echo $statusText; ?></td>
+                            </tr>
+                    <?php
                             $i++;
                         }
-                    } ?>
+                    }
+                    ?>
                 </tbody>
 
             </table>
