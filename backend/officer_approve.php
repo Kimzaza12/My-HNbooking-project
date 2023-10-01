@@ -34,13 +34,14 @@ if (isset($_GET['delete'])) {
 
     if ($result) {
         // เพิ่มข้อมูลลงในตาราง 'history'
-        $insertstmt = $conn->prepare("INSERT INTO history (h_HN, h_idnum, h_name, h_book, h_dp, h_room) VALUES (?, ?, ?, ?, ?, ?)");
+        $insertstmt = $conn->prepare("INSERT INTO history (h_HN, h_idnum, h_name, h_book, h_dp, h_room, h_status) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $insertstmt->bindParam(1, $result['HN'], PDO::PARAM_STR);
         $insertstmt->bindParam(2, $result['ID_number'], PDO::PARAM_STR);
         $insertstmt->bindParam(3, $result['S_name'], PDO::PARAM_STR);
         $insertstmt->bindParam(4, $result['booked_by'], PDO::PARAM_STR);
         $insertstmt->bindParam(5, $result['Department'], PDO::PARAM_STR);
         $insertstmt->bindParam(6, $result['room'], PDO::PARAM_STR);
+        $insertstmt->bindParam(7, $result['Status'], PDO::PARAM_STR); // เพิ่มคอลัมน์ h_status
         $insertstmt->execute();
 
         // ลบข้อมูลจากตาราง 'book'
@@ -52,6 +53,46 @@ if (isset($_GET['delete'])) {
             echo "<script>alert('Data has been deleted successfully and added to history');</script>";
             $_SESSION['success'] = "Data has been deleted successfully and added to history";
             header("refresh:1; url=officer_nroom.php");
+        }
+    } else {
+        echo "<script>alert('Data not found');</script>";
+    }
+}
+
+
+
+// เสร็จสิ้นการจอง
+if (isset($_GET['finish'])) {
+    $finish_HN = $_GET['finish'];
+
+    // ดึงข้อมูลการจองที่ต้องการยกเลิก
+    $selectstmt = $conn->prepare("SELECT * FROM book WHERE HN = ?");
+    $selectstmt->bindParam(1, $finish_HN, PDO::PARAM_STR);
+    $selectstmt->execute();
+    $result = $selectstmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        // เพิ่มข้อมูลลงในตาราง 'history' พร้อมกับการเพิ่มคอลัมน์ 'h_status' ในตาราง 'history'
+        $insertstmt = $conn->prepare("INSERT INTO history (h_HN, h_idnum, h_name, h_book, h_dp, h_room, h_status) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $insertstmt->bindParam(1, $result['HN'], PDO::PARAM_STR);
+        $insertstmt->bindParam(2, $result['ID_number'], PDO::PARAM_STR);
+        $insertstmt->bindParam(3, $result['S_name'], PDO::PARAM_STR);
+        $insertstmt->bindParam(4, $result['booked_by'], PDO::PARAM_STR);
+        $insertstmt->bindParam(5, $result['Department'], PDO::PARAM_STR);
+        $insertstmt->bindParam(6, $result['room'], PDO::PARAM_STR);
+        $status_finish = "เสร็จสิ้นการจอง"; // สถานะ "เสร็จสิ้นการจอง"
+        $insertstmt->bindParam(7, $status_finish, PDO::PARAM_STR);
+        $insertstmt->execute();
+
+        // ลบข้อมูลการจองจากตาราง 'book'
+        $deletestmt = $conn->prepare("DELETE FROM book WHERE HN = ?");
+        $deletestmt->bindValue(1, $finish_HN, PDO::PARAM_STR);
+        $deletestmt->execute();
+
+        if ($deletestmt && $insertstmt) {
+            echo "<script>alert('Data has been marked as finished and added to history');</script>";
+            $_SESSION['success'] = "Data has been marked as finished and added to history";
+            header("refresh:1; url=officer_approve.php");
         }
     } else {
         echo "<script>alert('Data not found');</script>";
@@ -189,9 +230,14 @@ if (isset($_GET['delete'])) {
                                 <td><?php echo $rbook['room']; ?></td>
                                 <td><?php echo $rbook['Status']; ?></td>
                                 <td>
-                                    <a href="?approve=<?php echo $rbook['HN']; ?>" class="btn btn-info">อนุมัติ</a>
-                                    <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $rbook['HN']; ?>" class="btn btn-danger">ยกเลิกการจอง</a>
-                                    <a href="?finish=<?php echo $rbook['HN']; ?>" class="btn btn-success">เสร็จสิ้นการจอง</a>
+                                    <?php if ($rbook['Status'] == 'รออนุมัติ') { ?>
+                                        <a href="?approve=<?php echo $rbook['HN']; ?>" class="btn btn-info">อนุมัติ</a>
+                                        <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $rbook['HN']; ?>" class="btn btn-danger">ยกเลิกการจอง</a>
+                                    <?php } elseif ($rbook['Status'] == 'อนุมัติ') { ?>
+                                        <a href="?approve=<?php echo $rbook['HN']; ?>" class="btn btn-info">อนุมัติ</a>
+                                        <a href="?finish=<?php echo $rbook['HN']; ?>" class="btn btn-success">เสร็จสิ้นการจอง</a>
+                                    <?php } ?>
+                                </td>
                             </tr>
                     <?php
                             $i++;
