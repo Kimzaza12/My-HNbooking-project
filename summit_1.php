@@ -85,7 +85,7 @@ require_once('db_submit.php');
                             </div>
 
                             <div class="label_form">
-                                <label for="appointment_date">วันที่นัดแพทย์ :</label>
+                                <label for="appointment_date">แพทย์นัดนอนโรงพยาบาลวันที่ :</label>
                                 <input type="date" id="appointment_date" name="appointment_date" required oninput="validateAppointmentDate()"> <br><br>
                             </div>
 
