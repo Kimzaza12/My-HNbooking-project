@@ -83,7 +83,7 @@ require_once('db_connection.php');
                             $rt_price = $row['rt_price'];
                             $rt_img = $row['rt_img'];
                             $rt_num = $row['rt_num'];
-                            $empty_rooms = $row['empty_rooms'];
+                            $empty_rooms = $row['rt_num'];
 
                             $roomClass = $firstRoom ? 'show' : ''; // ให้กำหนดคลาส 'show' เฉพาะห้องแรก
                             $firstRoom = false; // เปลี่ยนค่าเป็น false หลังจากกำหนดคลาสแล้ว
