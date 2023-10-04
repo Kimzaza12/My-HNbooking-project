@@ -10,8 +10,8 @@ if (isset($_GET['delete'])) {
     $deletestmt->execute();
 
     if ($deletestmt) {
-        echo "<script>alert('Data has been deleted successfully');</script>";
-        $_SESSION['success'] = "Data has been deleted succesfully";
+        echo "<script>alert('ข้อมูลถูกลบเรียบร้อยแล้ว');</script>";
+        $_SESSION['success'] = "ข้อมูลถูกลบเรียบร้อยแล้ว";
         header("refresh:1; url=officer_room.php");
     }
 }
@@ -190,7 +190,7 @@ if (isset($_GET['delete'])) {
                             <td><?php echo $roomt['rt_num']; ?></td>
                             <td>
                                 <a href="room_edit.php?rt_id=<?php echo $roomt['rt_id']; ?>" class="btn btn-warning">แก้ไขข้อมูล</a>
-                                <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $roomt['rt_id']; ?>" class="btn btn-danger">ลบข้อมูล</a>
+                                <a onclick="return confirm('คุณต้องการจะลบข้อมูลใช่หรือไม่?');" href="?delete=<?php echo $roomt['rt_id']; ?>" class="btn btn-danger">ลบข้อมูล</a>
                             </td>
                         </tr>
                 <?php

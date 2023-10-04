@@ -22,10 +22,10 @@ if (isset($_POST['update'])) {
     $sql->execute();
 
     if ($sql) {
-        $_SESSION['success'] = "Data has been updated successfully";
+        $_SESSION['success'] = "ข้อมูลถูกอัปเดตเรียบร้อยเเล้ว";
         header("location: admin_member.php");
     } else {
-        $_SESSION['error'] = "Data has not been updated successfully";
+        $_SESSION['error'] = "การอัปเดตข้อมูลไม่สำเร็จ";
         header("location: admin_member.php");
     }
 }
@@ -54,7 +54,7 @@ if (isset($_POST['update'])) {
 
 <body>
     <div class="container mt-5">
-        <h1>Edit Member Data</h1>
+        <h1>เเก้ไขข้อมูลสมาชิก</h1>
         <hr>
         <form action="member_edit.php" method="post" enctype="multipart/form-data">
             <?php
@@ -100,8 +100,8 @@ if (isset($_POST['update'])) {
             </div>
 
             <hr>
-            <a href="admin_member.php" class="btn btn-secondary">Go Back</a>
-            <button type="submit" name="update" class="btn btn-primary">Update</button>
+            <a href="admin_member.php" class="btn btn-secondary">ย้อนกลับ</a>
+            <button type="submit" name="update" class="btn btn-primary">อัปเดต</button>
         </form>
     </div>
 

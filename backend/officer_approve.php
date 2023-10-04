@@ -44,11 +44,11 @@ if (isset($_GET['approve'])) {
 
         // ตรวจสอบความสำเร็จและเปลี่ยนเส้นทาง
         if ($approvetmt && $updateRoomStmt) {
-            $_SESSION['success'] = "Status has been changed successfully";
+            $_SESSION['success'] = "สถานะการจองถูกเปลี่ยนแปลงเรียบร้อยเเล้ว";
             header("refresh:2; url=officer_approve.php");
         }
     } else {
-        echo "<script>alert('Data not found');</script>";
+        echo "<script>alert('ไม่พบข้อมูล');</script>";
     }
 }
 //ยกเลิกการจอง
@@ -79,12 +79,12 @@ if (isset($_GET['delete'])) {
         $deletestmt->execute();
 
         if ($deletestmt && $insertstmt) {
-            echo "<script>alert('Data has been deleted successfully and added to history');</script>";
-            $_SESSION['success'] = "Data has been deleted successfully and added to history";
-            header("refresh:1; url=officer_nroom.php");
+            echo "<script>alert('การจองถูกยกเลิกเเละข้อมูลถูกจัดเก็บในประวัติการจอง');</script>";
+            $_SESSION['success'] = "การจองถูกยกเลิกเเละข้อมูลถูกจัดเก็บในประวัติการจอง";
+            header("refresh:1; url=officer_approve.php");
         }
     } else {
-        echo "<script>alert('Data not found');</script>";
+        echo "<script>alert('ไม่พบข้อมูล');</script>";
     }
 }
 
@@ -119,12 +119,12 @@ if (isset($_GET['finish'])) {
         $deletestmt->execute();
 
         if ($deletestmt && $insertstmt) {
-            echo "<script>alert('Data has been marked as finished and added to history');</script>";
-            $_SESSION['success'] = "Data has been marked as finished and added to history";
+            echo "<script>alert('การจองเสร็จสิ้นเเละข้อมูลถูกจัดเก็บในประวัติการจอง');</script>";
+            $_SESSION['success'] = "การจองเสร็จสิ้นเเละข้อมูลถูกจัดเก็บในประวัติการจอง";
             header("refresh:1; url=officer_approve.php");
         }
     } else {
-        echo "<script>alert('Data not found');</script>";
+        echo "<script>alert('ไม่พบข้อมูล');</script>";
     }
 }
 
@@ -245,7 +245,7 @@ if (isset($_GET['finish'])) {
                     $book = $stmt->fetchAll();
 
                     if (!$book) {
-                        echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                        echo "<p><td colspan='9' class='text-center'>No data available</td></p>";
                     } else {
                         $i = 1;
                         foreach ($book as $rbook) {
@@ -262,7 +262,7 @@ if (isset($_GET['finish'])) {
                                 <td>
                                     <?php if ($rbook['Status'] == 'รออนุมัติ') { ?>
                                         <a href="?approve=<?php echo $rbook['HN']; ?>" class="btn btn-info">อนุมัติ</a>
-                                        <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $rbook['HN']; ?>" class="btn btn-danger">ยกเลิกการจอง</a>
+                                        <a onclick="return confirm('คุณต้องการยกเลิกการจองใช่หรือไม่?');" href="?delete=<?php echo $rbook['HN']; ?>" class="btn btn-danger">ยกเลิกการจอง</a>
                                     <?php } elseif ($rbook['Status'] == 'อนุมัติ') { ?>
                                         <a href="?approve=<?php echo $rbook['HN']; ?>" class="btn btn-info">อนุมัติ</a>
                                         <a href="?finish=<?php echo $rbook['HN']; ?>" class="btn btn-success">เสร็จสิ้นการจอง</a>

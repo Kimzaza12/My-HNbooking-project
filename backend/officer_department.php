@@ -9,8 +9,8 @@ if (isset($_GET['delete'])) {
     $deletestmt->execute();
 
     if ($deletestmt) {
-        echo "<script>alert('Data has been deleted successfully');</script>";
-        $_SESSION['success'] = "Data has been deleted succesfully";
+        echo "<script>alert('ข้อมูลถูกลบเรียบร้อยแล้ว');</script>";
+        $_SESSION['success'] = "ข้อมูลถูกลบเรียบร้อยแล้ว";
         header("refresh:1; url=officer_department.php");
     }
 }
@@ -85,9 +85,6 @@ if (isset($_GET['delete'])) {
             <li class="nav-item">
                 <a class="nav-link" href="officer_room.php"> ประเภทห้องพัก </a>
             </li>
-            <!--<li class="nav-item">
-                <a class="nav-link" href="officer_nroom.php"> สถานะห้องพัก </a>
-            </li>-->
             <li class="nav-item">
                 <a class="nav-link" href="officer_approve.php"> ข้อมูลการจอง </a>
             </li>
@@ -153,7 +150,7 @@ if (isset($_GET['delete'])) {
                     $department = $stmt->fetchAll();
 
                     if (!$department) {
-                        echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                        echo "<p><td colspan='3' class='text-center'>No data available</td></p>";
                     } else {
                         $i = 1;
                         foreach ($department as $dp) {
@@ -164,7 +161,7 @@ if (isset($_GET['delete'])) {
 
                                 <td>
                                     <a href="department_edit.php?d_id=<?php echo $dp['d_id']; ?>" class="btn btn-warning">แก้ไขข้อมูล</a>
-                                    <a onclick="return confirm('Are you sure you want to delete?');" href="?delete=<?php echo $dp['d_id']; ?>" class="btn btn-danger">ลบข้อมูล</a>
+                                    <a onclick="return confirm('คุณต้องการจะลบข้อมูลใช่หรือไม่?');" href="?delete=<?php echo $dp['d_id']; ?>" class="btn btn-danger">ลบข้อมูล</a>
                             </tr>
                     <?php
                             $i++;

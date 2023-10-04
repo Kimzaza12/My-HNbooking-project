@@ -38,10 +38,10 @@ if (isset($_POST['update'])) {
     $sql->execute();
 
     if ($sql) {
-        $_SESSION['success'] = "Data has been updated successfully";
+        $_SESSION['success'] = "ข้อมูลถูกอัปเดตเรียบร้อยเเล้ว";
         header("location: officer_room.php");
     } else {
-        $_SESSION['error'] = "Data has not been updated successfully";
+        $_SESSION['error'] = "การอัปเดตข้อมูลไม่สำเร็จ";
         header("location: officer_room.php");
     }
 }
@@ -54,7 +54,7 @@ if (isset($_POST['update'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Room Category Data</title>
+    <title>Edit Room Data</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <style>
@@ -66,7 +66,7 @@ if (isset($_POST['update'])) {
 
 <body>
     <div class="container mt-5">
-        <h1>Edit Room Category Data</h1>
+        <h1>เเก้ไขข้อมูลห้องพัก</h1>
         <hr>
         <form action="room_edit.php" method="post" enctype="multipart/form-data">
             <?php
@@ -97,8 +97,8 @@ if (isset($_POST['update'])) {
                 <input type="number" value="<?php echo $data['rt_num']; ?>" required class="form-control" name="rnum">
             </div>
             <hr>
-            <a href="officer_room.php" class="btn btn-secondary">Go Back</a>
-            <button type="submit" name="update" class="btn btn-primary">Update</button>
+            <a href="officer_room.php" class="btn btn-secondary">ย้อนกลับ</a>
+            <button type="submit" name="update" class="btn btn-primary">อัปเดต</button>
         </form>
     </div>
 

@@ -36,11 +36,11 @@ if (isset($_SESSION['officer_login'])) {
             $sql->execute();
 
             if ($sql) {
-                $_SESSION['success'] = "Data has been updated successfully";
+                $_SESSION['success'] = "ข้อมูลถูกอัปเดตเรียบร้อยเเล้ว";
                 header("location: officer_profile.php");
                 exit();
             } else {
-                $_SESSION['error'] = "Data has not been updated successfully";
+                $_SESSION['error'] = "การอัปเดตข้อมูลไม่สำเร็จ";
                 header("location: officer_profile.php");
                 exit();
             }
@@ -60,7 +60,7 @@ if (isset($_SESSION['officer_login'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เเก้ไขโปรไฟล์</title>
+    <title>Edit profile</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -122,8 +122,8 @@ if (isset($_SESSION['officer_login'])) {
             </div>
 
             <hr>
-            <a href="officer_index.php" class="btn btn-secondary">Go Back</a>
-            <button type="submit" name="update" class="btn btn-primary">Update</button>
+            <a href="officer_index.php" class="btn btn-secondary">ย้อนกลับ</a>
+            <button type="submit" name="update" class="btn btn-primary">อัปเดต</button>
         </form>
     </div>
 

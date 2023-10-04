@@ -14,10 +14,10 @@ if (isset($_POST['update'])) {
     $sql->execute();
 
     if ($sql) {
-        $_SESSION['success'] = "Data has been inserted successfully";
+        $_SESSION['success'] = "ข้อมูลถูกอัปเดตเรียบร้อยเเล้ว";
         header("location: officer_department.php");
     } else {
-        $_SESSION['error'] = "Data has not been inserted successfully";
+        $_SESSION['error'] = "การอัปเดตข้อมูลไม่สำเร็จ";
         header("location: officer_department.php");
     }
 }
@@ -43,7 +43,7 @@ if (isset($_POST['update'])) {
 
 <body>
     <div class="container mt-5">
-        <h1>Edit Department Data</h1>
+        <h1>เเก้ไขข้อมูลแผนก</h1>
         <hr>
         <form action="department_edit.php" method="post" enctype="multipart/form-data">
             <?php
@@ -60,8 +60,8 @@ if (isset($_POST['update'])) {
                 <input type="text" value="<?php echo $data['d_name']; ?>" required class="form-control" name="dname">
             </div>
             <hr>
-            <a href="officer_department.php" class="btn btn-secondary">Go Back</a>
-            <button type="submit" name="update" class="btn btn-primary">Update</button>
+            <a href="officer_department.php" class="btn btn-secondary">ย้อนกลับ</a>
+            <button type="submit" name="update" class="btn btn-primary">อัปเดต</button>
         </form>
     </div>
 </body>
