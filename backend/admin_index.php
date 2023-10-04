@@ -58,7 +58,7 @@ if (!isset($_SESSION['admin_login'])) {
 
 
                         <div class="texta">
-                            <a> จำนวนสมาชิก </a>
+                            <a> จำนวนเจ้าหน้าที่ </a>
                         </div>
 
                     </div>
@@ -81,7 +81,7 @@ if (!isset($_SESSION['admin_login'])) {
                 <a class="nav-link" href="admin_index.php"> หน้าหลัก </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="admin_member.php"> จัดการสมาชิก </a>
+                <a class="nav-link" href="admin_member.php"> จัดการเจ้าหน้าที่ </a>
             </li>
             <div class="boxout2">
                 <li class="nav-item">

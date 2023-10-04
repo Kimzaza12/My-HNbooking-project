@@ -39,7 +39,7 @@ if (isset($_POST['update'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Member Data</title>
+    <title>เเก้ไขข้อมูลเจ้าหน้าที่</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -54,7 +54,7 @@ if (isset($_POST['update'])) {
 
 <body>
     <div class="container mt-5">
-        <h1>เเก้ไขข้อมูลสมาชิก</h1>
+        <h1>เเก้ไขข้อมูลเจ้าหน้าที่</h1>
         <hr>
         <form action="member_edit.php" method="post" enctype="multipart/form-data">
             <?php

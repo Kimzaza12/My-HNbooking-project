@@ -59,8 +59,7 @@ if (isset($_GET['delete'])) {
                             <input type="text" required class="form-control" name="dname">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" name="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" name="submit" class="btn btn-success">เพิ่มข้อมูล</button>
                         </div>
                     </form>
                 </div>
@@ -83,7 +82,7 @@ if (isset($_GET['delete'])) {
                 <a class="nav-link" href="officer_department.php"> แผนกผู้ป่วย </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="officer_room.php"> ประเภทห้องพัก </a>
+                <a class="nav-link" href="officer_room.php"> ห้องพักผู้ป่วย </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="officer_approve.php"> ข้อมูลการจอง </a>

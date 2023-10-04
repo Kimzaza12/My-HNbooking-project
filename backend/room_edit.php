@@ -54,19 +54,19 @@ if (isset($_POST['update'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Room Data</title>
+    <title>เเก้ไขข้อมูลห้องพักผู้ป่วย</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <style>
         .container {
-            max-width: 550px;
+            max-width: 500px;
         }
     </style>
 </head>
 
 <body>
     <div class="container mt-5">
-        <h1>เเก้ไขข้อมูลห้องพัก</h1>
+        <h1>เเก้ไขข้อมูลห้องพักผู้ป่วย</h1>
         <hr>
         <form action="room_edit.php" method="post" enctype="multipart/form-data">
             <?php

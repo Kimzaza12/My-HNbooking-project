@@ -49,7 +49,7 @@ require_once('db.php');
                 <a class="nav-link" href="officer_department.php"> แผนกผู้ป่วย </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="officer_room.php"> ประเภทห้องพัก </a>
+                <a class="nav-link" href="officer_room.php"> ห้องพักผู้ป่วย </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="officer_approve.php"> ข้อมูลการจอง </a>
