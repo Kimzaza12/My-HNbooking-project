@@ -36,6 +36,8 @@ if (isset($_GET['approve'])) {
             $rt_num++; // เพิ่มจำนวนห้องว่างขึ้น 1
         }
 
+
+
         // ทำการอัปเดตจำนวนห้องว่างในฐานข้อมูลห้องพัก
         $updateRoomStmt = $conn->prepare("UPDATE room_type SET rt_num = :rt_num WHERE rt_type = :rt_type");
         $updateRoomStmt->bindParam(':rt_num', $rt_num);
@@ -121,9 +123,28 @@ if (isset($_GET['finish'])) {
         $deletestmt->execute();
 
         if ($deletestmt && $insertstmt) {
-            echo "<script>alert('การจองเสร็จสิ้นเเละข้อมูลถูกจัดเก็บในประวัติการจอง');</script>";
-            $_SESSION['success'] = "การจองเสร็จสิ้นเเละข้อมูลถูกจัดเก็บในประวัติการจอง";
-            header("refresh:1; url=officer_approve.php");
+            // ดึงค่าปัจจุบันของ $rt_num จากฐานข้อมูล
+            $selectRtNumStmt = $conn->prepare("SELECT rt_num FROM room_type WHERE rt_type = :roomType");
+            $roomType = $result['room']; // ชื่อของห้องที่เกี่ยวข้องกับการจอง
+            $selectRtNumStmt->bindParam(':roomType', $roomType, PDO::PARAM_STR);
+            $selectRtNumStmt->execute();
+            $currentRtNum = $selectRtNumStmt->fetchColumn();
+
+            // เพิ่มค่าปัจจุบันของ $rt_num ด้วย 1
+            $newRtNum = $currentRtNum + 1;
+
+            // อัปเดตค่า $rt_num ในฐานข้อมูล
+            $updateRtNumStmt = $conn->prepare("UPDATE room_type SET rt_num = :newRtNum WHERE rt_type = :roomType");
+            $updateRtNumStmt->bindParam(':newRtNum', $newRtNum, PDO::PARAM_INT);
+            $updateRtNumStmt->bindParam(':roomType', $roomType, PDO::PARAM_STR);
+
+            if ($updateRtNumStmt->execute()) {
+                echo "<script>alert('การจองเสร็จสิ้นและข้อมูลถูกจัดเก็บในประวัติการจอง');</script>";
+                $_SESSION['success'] = "การจองเสร็จสิ้นและข้อมูลถูกจัดเก็บในประวัติการจอง";
+                header("refresh:1; url=officer_approve.php");
+            } else {
+                echo "<script>alert('เกิดข้อผิดพลาดในการอัปเดตค่า rt_num');</script>";
+            }
         }
     } else {
         echo "<script>alert('ไม่พบข้อมูล');</script>";
