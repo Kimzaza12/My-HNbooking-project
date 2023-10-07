@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2023 at 11:08 PM
+-- Generation Time: Oct 07, 2023 at 02:38 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -46,7 +46,6 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`current_datetime`, `appointment_date`, `HN`, `ID_number`, `S_name`, `booked_by`, `Department`, `P_number`, `Email`, `room`, `Status`) VALUES
-('2023-09-30 17:17:01', '2023-10-07', '6310210014', '1839000890088', 'สมสาย มานีนายา', 'กฤตพณ ศักดา', 'หู ตา คอ จมูก', '0805223388', 'popeye34@gmail.com', 'พิเศษ 1', 'รออนุมัติ'),
 ('2023-09-28 16:45:44', '2023-09-29', '6310210403', '1830101151811', 'สมสาย มานีนา', 'กฤตพณ ศักดา', 'อายุรกรรม', '0805223300', 'popeye2@gmail.com', 'พิเศษ 1', 'รออนุมัติ');
 
 -- --------------------------------------------------------
@@ -78,7 +77,8 @@ INSERT INTO `department` (`d_id`, `d_name`) VALUES
 CREATE TABLE `history` (
   `h_id` int(10) NOT NULL,
   `h_HN` varchar(10) NOT NULL,
-  `h_idnum` varchar(13) NOT NULL,
+  `h_Cdate` datetime DEFAULT NULL,
+  `h_Adate` date DEFAULT NULL,
   `h_name` varchar(20) NOT NULL,
   `h_book` varchar(255) NOT NULL,
   `h_dp` varchar(255) NOT NULL,
@@ -90,9 +90,8 @@ CREATE TABLE `history` (
 -- Dumping data for table `history`
 --
 
-INSERT INTO `history` (`h_id`, `h_HN`, `h_idnum`, `h_name`, `h_book`, `h_dp`, `h_room`, `h_status`) VALUES
-(1, '6310210160', '1839900642600', 'จักกรี อารี', 'สายฝน กลางคืน', 'หู คอ จมูก', 'ห้องพักแบบพิเศษ 1', ''),
-(2, '6310210403', '1830101151811', 'สมสาย มานีนา', 'สาสม ออเก้า', 'อายุรกรรม', 'ห้องพักแบบพิเศษ 1', '');
+INSERT INTO `history` (`h_id`, `h_HN`, `h_Cdate`, `h_Adate`, `h_name`, `h_book`, `h_dp`, `h_room`, `h_status`) VALUES
+(3, '6310210014', '2023-09-30 17:17:01', '2023-10-07', 'สมสาย มานีนายา', 'กฤตพณ ศักดา', 'หู ตา คอ จมูก', 'พิเศษ 1', 'เสร็จสิ้นการจอง');
 
 -- --------------------------------------------------------
 
@@ -210,7 +209,7 @@ CREATE TABLE `room_type` (
 --
 
 INSERT INTO `room_type` (`rt_id`, `rt_type`, `rt_price`, `rt_img`, `rt_num`) VALUES
-(1, 'พิเศษ 1', '2500', '164299518.jpg', 10),
+(1, 'พิเศษ 1', '2500', '164299518.jpg', 9),
 (2, 'พิเศษ 2', '4000', '1698634197.jpg', 5),
 (3, 'ราคาประหยัด 1', '400', '1019634679.jpg', 50),
 (13, 'ราคาประหยัด 2', '600', '1374815459.jpg', 35);
@@ -282,7 +281,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `h_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `h_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `member`

@@ -187,13 +187,15 @@ nav.sidebar hr {
 .text-end{
     display: flex;
     width: 310px;
-    float: right;
+    display: flex;
+    justify-content: end;
 }
 
 div.textsearch{
     margin-top: 50px;
-
-
+    padding-right: 30px;
+    display: flex;
+    justify-content: end;
 }
 
 
