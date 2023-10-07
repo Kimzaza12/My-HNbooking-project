@@ -2,6 +2,7 @@
 session_start();
 require_once('db.php');
 
+// Check if the user is logged in and has the 'officer' role
 if (isset($_SESSION['officer_login'])) {
     $officer_id = $_SESSION['officer_login'];
     $stmt = $conn->prepare("SELECT * FROM member WHERE m_id = :officer_id");
@@ -9,6 +10,7 @@ if (isset($_SESSION['officer_login'])) {
     $stmt->execute();
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    // Check if the user's role is 'officer'
     if ($row['m_level'] === 'officer') {
         $m_id = $row['m_id'];
         $m_firstname = $row['m_firstname'];
@@ -23,6 +25,7 @@ if (isset($_SESSION['officer_login'])) {
             $m_username = $_POST['username'];
             $m_password = $_POST['password'];
 
+            // Update the user's data
             $sql = $conn->prepare("UPDATE member SET m_firstname = :firstname, m_lastname = :lastname, m_username = :username, 
             m_password = :password WHERE m_id = :id");
             $sql->bindParam(":id", $m_id);
@@ -57,7 +60,7 @@ if (isset($_SESSION['officer_login'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เเก้ไขโปรไฟล์</title>
+    <title>Edit profile</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -108,10 +111,13 @@ if (isset($_SESSION['officer_login'])) {
             <div class="mb-3 pass-table">
                 <label for="password" class="col-form-label">Password:</label>
                 <div class="pass-cus">
-                    <input type="password" readonly value="<?php echo $m_password; ?>" required class="form-control" id="password" name="password">
-                </div>
-                <div class="extra">
-                    <a href="officer_password.php"> เปลี่ยนรหัสผ่าน</a>
+                    <input type="password" value="<?php echo $m_password; ?>" required class="form-control" id="password" name="password">
+                    <div class="input-group-append">
+                        <span class="input-group-text" onclick="password_show_hide();">
+                            <i class="bi bi-eye-fill" id="show_eye"></i>
+                            <i class="bi bi-eye-slash-fill d-none" id="hide_eye"></i>
+                        </span>
+                    </div>
                 </div>
             </div>
 
@@ -122,6 +128,7 @@ if (isset($_SESSION['officer_login'])) {
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="JS/hidebutton.js"></script>
     <script>
         // ฟังก์ชันเมื่อครบ 1 วิ ให้ปุ่มเเจ้ง update หายไป
         function hideMessages() {

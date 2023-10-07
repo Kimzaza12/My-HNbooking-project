@@ -63,14 +63,15 @@ if (isset($_GET['delete'])) {
 
     if ($result) {
         // เพิ่มข้อมูลลงในตาราง 'history'
-        $insertstmt = $conn->prepare("INSERT INTO history (h_HN, h_idnum, h_name, h_book, h_dp, h_room, h_status) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $insertstmt = $conn->prepare("INSERT INTO history (h_HN, h_Cdate, h_Adate, h_name, h_book, h_dp, h_room, h_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $insertstmt->bindParam(1, $result['HN'], PDO::PARAM_STR);
-        $insertstmt->bindParam(2, $result['ID_number'], PDO::PARAM_STR);
-        $insertstmt->bindParam(3, $result['S_name'], PDO::PARAM_STR);
-        $insertstmt->bindParam(4, $result['booked_by'], PDO::PARAM_STR);
-        $insertstmt->bindParam(5, $result['Department'], PDO::PARAM_STR);
-        $insertstmt->bindParam(6, $result['room'], PDO::PARAM_STR);
-        $insertstmt->bindParam(7, $result['Status'], PDO::PARAM_STR); // เพิ่มคอลัมน์ h_status
+        $insertstmt->bindParam(2, $result['current_datetime'], PDO::PARAM_STR);
+        $insertstmt->bindParam(3, $result['appointment_date'], PDO::PARAM_STR);
+        $insertstmt->bindParam(4, $result['S_name'], PDO::PARAM_STR);
+        $insertstmt->bindParam(5, $result['booked_by'], PDO::PARAM_STR);
+        $insertstmt->bindParam(6, $result['Department'], PDO::PARAM_STR);
+        $insertstmt->bindParam(7, $result['room'], PDO::PARAM_STR);
+        $insertstmt->bindParam(8, $result['Status'], PDO::PARAM_STR); // เพิ่มคอลัมน์ h_status
         $insertstmt->execute();
 
         // ลบข้อมูลจากตาราง 'book'
@@ -102,15 +103,16 @@ if (isset($_GET['finish'])) {
 
     if ($result) {
         // เพิ่มข้อมูลลงในตาราง 'history' พร้อมกับการเพิ่มคอลัมน์ 'h_status' ในตาราง 'history'
-        $insertstmt = $conn->prepare("INSERT INTO history (h_HN, h_idnum, h_name, h_book, h_dp, h_room, h_status) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $insertstmt = $conn->prepare("INSERT INTO history (h_HN, h_Cdate, h_Adate, h_name, h_book, h_dp, h_room, h_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $insertstmt->bindParam(1, $result['HN'], PDO::PARAM_STR);
-        $insertstmt->bindParam(2, $result['ID_number'], PDO::PARAM_STR);
-        $insertstmt->bindParam(3, $result['S_name'], PDO::PARAM_STR);
-        $insertstmt->bindParam(4, $result['booked_by'], PDO::PARAM_STR);
-        $insertstmt->bindParam(5, $result['Department'], PDO::PARAM_STR);
-        $insertstmt->bindParam(6, $result['room'], PDO::PARAM_STR);
+        $insertstmt->bindParam(2, $result['current_datetime'], PDO::PARAM_STR);
+        $insertstmt->bindParam(3, $result['appointment_date'], PDO::PARAM_STR);
+        $insertstmt->bindParam(4, $result['S_name'], PDO::PARAM_STR);
+        $insertstmt->bindParam(5, $result['booked_by'], PDO::PARAM_STR);
+        $insertstmt->bindParam(6, $result['Department'], PDO::PARAM_STR);
+        $insertstmt->bindParam(7, $result['room'], PDO::PARAM_STR);
         $status_finish = "เสร็จสิ้นการจอง"; // สถานะ "เสร็จสิ้นการจอง"
-        $insertstmt->bindParam(7, $status_finish, PDO::PARAM_STR);
+        $insertstmt->bindParam(8, $status_finish, PDO::PARAM_STR);
         $insertstmt->execute();
 
         // ลบข้อมูลการจองจากตาราง 'book'
@@ -201,10 +203,10 @@ if (isset($_GET['finish'])) {
     <div class="container">
         <div class="row">
 
-                <div class="texthh">
-                    <h3>จัดการข้อมูลการจอง</h3>
-                    <hr>
-                </div>
+            <div class="texthh">
+                <h3>จัดการข้อมูลการจอง</h3>
+                <hr>
+            </div>
 
             <?php if (isset($_SESSION['success'])) { ?>
                 <div class="alert alert-success">
@@ -228,13 +230,13 @@ if (isset($_GET['finish'])) {
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">HN ผู้ป่วย</th>
-                        <th scope="col">รหัสบัตรประชาชน</th>
+                        <th scope="col">วันและเวลาที่ทำการจอง</th>
+                        <th scope="col">วันที่แพทย์นัดนอนโรงพยาบาล</th>
                         <th scope="col">ชื่อ-นามสกุล(ผู้ป่วย)</th>
                         <th scope="col">แผนก</th>
                         <th scope="col">ชื่อ-นามสกุล(ผู้จอง)</th>
                         <th scope="col">ห้องพัก</th>
-                        <th scope="col">สถานะการจอง</th>
-                        <th scope="col">จัดการ</th>
+                        <th scope="col">สถานะ</th>
                     </tr>
                 </thead>
 
@@ -245,7 +247,7 @@ if (isset($_GET['finish'])) {
                     $book = $stmt->fetchAll();
 
                     if (!$book) {
-                        echo "<p><td colspan='9' class='text-center'>No data available</td></p>";
+                        echo "<p><td colspan='10' class='text-center'>No data available</td></p>";
                     } else {
                         $i = 1;
                         foreach ($book as $rbook) {
@@ -253,7 +255,8 @@ if (isset($_GET['finish'])) {
                             <tr>
                                 <td> <?php echo $i; ?> </td>
                                 <td><?php echo $rbook['HN']; ?></td>
-                                <td><?php echo $rbook['ID_number']; ?></td>
+                                <td><?php echo $rbook['current_datetime']; ?></td>
+                                <td><?php echo $rbook['appointment_date']; ?></td>
                                 <td><?php echo $rbook['S_name']; ?></td>
                                 <td><?php echo $rbook['Department']; ?></td>
                                 <td><?php echo $rbook['booked_by']; ?></td>

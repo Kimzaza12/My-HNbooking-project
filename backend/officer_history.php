@@ -120,7 +120,8 @@ require_once('db.php');
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">HN ผู้ป่วย</th>
-                        <th scope="col">รหัสบัตรประชาชน</th>
+                        <th scope="col">วันและเวลาที่ทำการจอง</th>
+                        <th scope="col">วันที่แพทย์นัดนอนโรงพยาบาล</th>
                         <th scope="col">ชื่อ-นามสกุล(ผู้ป่วย)</th>
                         <th scope="col">แผนก</th>
                         <th scope="col">ชื่อ-นามสกุล(ผู้จอง)</th>
@@ -141,7 +142,7 @@ require_once('db.php');
 
 
                     if (!$history) {
-                        echo "<p><td colspan='8' class='text-center'>No data available</td></p>";
+                        echo "<p><td colspan='9' class='text-center'>No data available</td></p>";
                     } else {
                         $i = 1;
                         foreach ($history as $ht) {
@@ -162,7 +163,8 @@ require_once('db.php');
                             <tr>
                                 <td><?php echo $i; ?></td>
                                 <td><?php echo $ht['h_HN']; ?></td>
-                                <td><?php echo $ht['h_idnum']; ?></td>
+                                <td><?php echo $ht['h_Cdate']; ?></td>
+                                <td><?php echo $ht['h_Adate']; ?></td>
                                 <td><?php echo $ht['h_name']; ?></td>
                                 <td><?php echo $ht['h_dp']; ?></td>
                                 <td><?php echo $ht['h_book']; ?></td>
