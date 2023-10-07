@@ -1,6 +1,7 @@
 body{
     font-family: 'Noto Sans Thai', sans-serif;
-    
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .container{
