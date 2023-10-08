@@ -59,7 +59,7 @@ session_start();
 
         </form>
     </div>
-    <script src="JS/hidebutton.js"></script>
+    <script src="JS/hidebutton2.js"></script>
 </body>
 
 </html>
