@@ -13,22 +13,18 @@ if (isset($_SESSION['officer_login'])) {
         $m_id = $row['m_id'];
         $m_firstname = $row['m_firstname'];
         $m_lastname = $row['m_lastname'];
-        $m_username = $row['m_username'];
         $m_password = $row['m_password'];
 
         if (isset($_POST['update'])) {
             $m_id = $_POST['id'];
             $m_firstname = $_POST['firstname'];
             $m_lastname = $_POST['lastname'];
-            $m_username = $_POST['username'];
             $m_password = $_POST['password'];
 
-            $sql = $conn->prepare("UPDATE member SET m_firstname = :firstname, m_lastname = :lastname, m_username = :username, 
-            m_password = :password WHERE m_id = :id");
+            $sql = $conn->prepare("UPDATE member SET m_firstname = :firstname, m_lastname = :lastname, m_password = :password WHERE m_id = :id");
             $sql->bindParam(":id", $m_id);
             $sql->bindParam(":firstname", $m_firstname);
             $sql->bindParam(":lastname", $m_lastname);
-            $sql->bindParam(":username", $m_username);
             $sql->bindParam(":password", $m_password);
             $sql->execute();
 
@@ -101,10 +97,6 @@ if (isset($_SESSION['officer_login'])) {
                 <label for="lastname" class="col-form-label">นามสกุล:</label>
                 <input type="text" value="<?php echo $m_lastname; ?>" required class="form-control" name="lastname">
             </div>
-           <!-- <div class="mb-3">
-                <label for="username" class="col-form-label">Username:</label>
-                <input type="text" value="<?php echo $m_username; ?>" required class="form-control" name="username">
-            </div>-->
             <div class="mb-3 pass-table">
                 <label for="password" class="col-form-label">Password:</label>
                 <div class="pass-cus">
