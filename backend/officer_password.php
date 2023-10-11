@@ -23,8 +23,9 @@ if (isset($_SESSION['officer_login'])) {
             if ($old_password === $row['m_password']) {
 
                 if ($new_password === $confirm_password) {
-                    $sql = $conn->prepare("UPDATE member SET m_password = :password WHERE m_id = :id");
+                    $sql = $conn->prepare("UPDATE member SET m_password = :password, m_username = :username WHERE m_id = :id");
                     $sql->bindParam(":id", $m_id);
+                    $sql->bindParam(":username", $m_username);
                     $sql->bindParam(":password", $new_password);
                     $sql->execute();
 
