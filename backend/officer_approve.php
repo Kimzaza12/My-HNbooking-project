@@ -73,9 +73,9 @@ if (isset($_GET['delete'])) {
         $insertstmt->bindParam(5, $result['booked_by'], PDO::PARAM_STR);
         $insertstmt->bindParam(6, $result['Department'], PDO::PARAM_STR);
         $insertstmt->bindParam(7, $result['room'], PDO::PARAM_STR);
-        $insertstmt->bindParam(8, $result['Status'], PDO::PARAM_STR); // เพิ่มคอลัมน์ h_status
+        $status_finish = "ยกเลิกการจอง"; // สถานะ "เสร็จสิ้นการจอง"
+        $insertstmt->bindParam(8, $status_finish, PDO::PARAM_STR);
         $insertstmt->execute();
-
         // ลบข้อมูลจากตาราง 'book'
         $deletestmt = $conn->prepare("DELETE FROM book WHERE HN = ?");
         $deletestmt->bindValue(1, $delete_HN, PDO::PARAM_STR); // ใช้ bindValue แทน bindParam

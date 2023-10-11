@@ -144,7 +144,7 @@ require_once('db.php');
                             $status = $ht['h_status'];
 
                             // ตรวจสอบสถานะและกำหนดสีตามที่คุณต้องการ
-                            if ($status == 'รออนุมัติ') {
+                            if ($status == 'ยกเลิกการจอง') {
                                 $statusColor = 'red'; // สีแดงสำหรับรออนุมัติ
                                 $statusText = 'ยกเลิกการจอง';
                             } else if ($status == 'เสร็จสิ้นการจอง') {
