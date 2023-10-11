@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2023 at 08:26 PM
+-- Generation Time: Oct 11, 2023 at 10:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -46,9 +46,7 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`current_datetime`, `appointment_date`, `HN`, `ID_number`, `S_name`, `booked_by`, `Department`, `P_number`, `Email`, `room`, `Status`) VALUES
-('2023-10-08 01:24:28', '2023-10-19', '6310210013', '1839400000000', 'ศาสตราวุธ ผงเผ่า', 'มาโนช ชัพพลาย', 'อายุรกรรม', '0646215488', 'sfdsfdsfdsf@gmall', 'พิเศษ 1', 'รออนุมัติ'),
-('2023-10-08 01:24:52', '2023-10-21', '6310210160', '1839900642600', 'จักกรี อารี', 'มาโนช ชัพพลาย', 'อายุรกรรม', '0646215488', 'somchar@gmail.com', 'พิเศษ 1', 'รออนุมัติ'),
-('2023-10-08 01:25:07', '2023-10-11', '6310210403', '1830101151811', 'สมสาย มานีนา', 'มาโนช ชัพพลาย', 'อายุรกรรม', '0646215488', 'hamsusu@gmail.com', 'พิเศษ 1', 'รออนุมัติ');
+('2023-10-08 01:24:28', '2023-10-19', '6310210013', '1839400000000', 'ศาสตราวุธ ผงเผ่า', 'มาโนช ชัพพลาย', 'อายุรกรรม', '0646215488', 'sfdsfdsfdsf@gmall', 'พิเศษ 1', 'อนุมัติ');
 
 -- --------------------------------------------------------
 
@@ -68,7 +66,9 @@ CREATE TABLE `department` (
 INSERT INTO `department` (`d_id`, `d_name`) VALUES
 (1, 'อายุรกรรม'),
 (4, 'หู ตา คอ จมูก'),
-(6, 'เด็ก');
+(6, 'เด็ก'),
+(7, 'ผิวหนัง'),
+(8, 'จิตเวช');
 
 -- --------------------------------------------------------
 
@@ -114,7 +114,13 @@ INSERT INTO `history` (`h_id`, `h_HN`, `h_Cdate`, `h_Adate`, `h_name`, `h_book`,
 (22, '6310210160', '2023-10-08 01:07:39', '2023-10-13', 'จักกรี อารี', 'มาโนช ชัพพลาย', 'อายุรกรรม', 'ราคาประหยัด 2', 'เสร็จสิ้นการจอง'),
 (23, '6310210403', '2023-10-08 01:06:47', '2023-10-13', 'สมสาย มานีนา', 'สายฝน กลางคืน', 'หู ตา คอ จมูก', 'พิเศษ 1', 'เสร็จสิ้นการจอง'),
 (24, '6310210403', '2023-10-08 01:22:36', '2023-10-14', 'สมสาย มานีนา', 'สายฝน กลางคืน', 'อายุรกรรม', 'พิเศษ 1', 'รออนุมัติ'),
-(25, '6310210403', '2023-10-08 01:23:56', '2023-10-19', 'สมสาย มานีนา', 'สายฝน กลางคืน', 'อายุรกรรม', 'พิเศษ 1', 'รออนุมัติ');
+(25, '6310210403', '2023-10-08 01:23:56', '2023-10-19', 'สมสาย มานีนา', 'สายฝน กลางคืน', 'อายุรกรรม', 'พิเศษ 1', 'รออนุมัติ'),
+(26, '6310210403', '2023-10-08 01:25:07', '2023-10-11', 'สมสาย มานีนา', 'มาโนช ชัพพลาย', 'อายุรกรรม', 'พิเศษ 1', 'รออนุมัติ'),
+(27, '6310210123', '2023-10-11 22:05:51', '2023-10-12', 'จักกรี อารี', 'มาโนช ชัพพลาย', 'อายุรกรรม', 'พิเศษ 1', 'เสร็จสิ้นการจอง'),
+(28, '6310210160', '2023-10-08 01:24:52', '2023-10-21', 'จักกรี อารี', 'มาโนช ชัพพลาย', 'อายุรกรรม', 'พิเศษ 1', 'รออนุมัติ'),
+(29, '6310210160', '2023-10-08 01:24:52', '2023-10-21', 'จักกรี อารี', 'มาโนช ชัพพลาย', 'อายุรกรรม', 'พิเศษ 1', 'รออนุมัติ'),
+(30, '6310210160', '2023-10-08 01:24:52', '2023-10-21', 'จักกรี อารี', 'มาโนช ชัพพลาย', 'อายุรกรรม', 'พิเศษ 1', 'รออนุมัติ'),
+(31, '6310210160', '2023-10-08 01:24:52', '2023-10-21', 'จักกรี อารี', 'มาโนช ชัพพลาย', 'อายุรกรรม', 'พิเศษ 1', 'ยกเลิกการจอง');
 
 -- --------------------------------------------------------
 
@@ -138,7 +144,7 @@ CREATE TABLE `member` (
 INSERT INTO `member` (`m_id`, `m_firstname`, `m_lastname`, `m_username`, `m_password`, `m_level`) VALUES
 (1, 'mosskrit', 'sakda', 'moss123', '456789', 'admin'),
 (2, 'kritza', 'sakda', 'moss789', '789456', 'officer'),
-(3, 'popeyeza', 'lol', 'admin1', '123456', 'officer'),
+(3, 'Sittichai', 'Ong', 'officer1', '270944', 'officer'),
 (8, 'mosszaza', 'popeye', 'admin2', '2222', 'officer');
 
 -- --------------------------------------------------------
@@ -167,51 +173,8 @@ INSERT INTO `register` (`id`, `HN`, `S_name`, `ID_number`, `P_number`, `Email`) 
 (4, '6310210444', 'จักกรี อารี', '1830101151147', '0813246544', 'monthree@gmail.com'),
 (9, '6310210002', 'สหายเเสง กินเเกง', '1839000890000', '0815223369', 'popeye3@gmail.com'),
 (10, '6310210456', 'สมหมาย ใจสมุทร', '1839000890000', '0819708441', 'popeye@gmail.com'),
-(11, '6310210014', 'สมสาย มานีนายา', '1839000890088', '0805223370', 'popeye34@gmail.com');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `room`
---
-
-CREATE TABLE `room` (
-  `r_id` char(10) CHARACTER SET armscii8 COLLATE armscii8_general_ci NOT NULL,
-  `r_name` varchar(15) CHARACTER SET tis620 COLLATE tis620_thai_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `room`
---
-
-INSERT INTO `room` (`r_id`, `r_name`) VALUES
-('R-1', 'ราคาประหยัด'),
-('R-2', 'พิเศษ 1'),
-('R-3', 'พิเศษ 2');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `room_num`
---
-
-CREATE TABLE `room_num` (
-  `rn_id` int(10) NOT NULL,
-  `rt_id` int(10) NOT NULL,
-  `rn_name` varchar(200) CHARACTER SET armscii8 COLLATE armscii8_general_ci NOT NULL,
-  `rn_status` varchar(200) CHARACTER SET tis620 COLLATE tis620_thai_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `room_num`
---
-
-INSERT INTO `room_num` (`rn_id`, `rt_id`, `rn_name`, `rn_status`) VALUES
-(1, 1, 'Room-1', 'ห้องว่าง'),
-(2, 3, 'Room-2', 'ห้องว่าง'),
-(3, 2, 'Room-3', 'ห้องว่าง'),
-(4, 3, 'Room-4', 'ห้องว่าง'),
-(12, 13, 'Room-5', 'ห้องไม่ว่าง');
+(11, '6310210014', 'สมสาย มานีนายา', '1839000890088', '0805223370', 'popeye34@gmail.com'),
+(12, '6310210123', 'จักกรี อารี', '1830101151811', '0911638729', 'hamsusu@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -232,10 +195,11 @@ CREATE TABLE `room_type` (
 --
 
 INSERT INTO `room_type` (`rt_id`, `rt_type`, `rt_price`, `rt_img`, `rt_num`) VALUES
-(1, 'พิเศษ 1', '2500', '164299518.jpg', 25),
+(1, 'พิเศษ 1', '2500', '164299518.jpg', 24),
 (2, 'พิเศษ 2', '4000', '1698634197.jpg', 4),
 (3, 'ราคาประหยัด 1', '400', '1019634679.jpg', 50),
-(13, 'ราคาประหยัด 2', '600', '1374815459.jpg', 30);
+(13, 'ราคาประหยัด 2', '600', '1374815459.jpg', 30),
+(15, 'ห้องคิม', '5000', '1339859163.jpg', 20);
 
 --
 -- Indexes for dumped tables
@@ -272,19 +236,6 @@ ALTER TABLE `register`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `room`
---
-ALTER TABLE `room`
-  ADD PRIMARY KEY (`r_id`);
-
---
--- Indexes for table `room_num`
---
-ALTER TABLE `room_num`
-  ADD PRIMARY KEY (`rn_id`),
-  ADD KEY `rt_id` (`rt_id`);
-
---
 -- Indexes for table `room_type`
 --
 ALTER TABLE `room_type`
@@ -298,13 +249,13 @@ ALTER TABLE `room_type`
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `d_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `d_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `h_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `h_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -316,29 +267,13 @@ ALTER TABLE `member`
 -- AUTO_INCREMENT for table `register`
 --
 ALTER TABLE `register`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `room_num`
---
-ALTER TABLE `room_num`
-  MODIFY `rn_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `room_type`
 --
 ALTER TABLE `room_type`
-  MODIFY `rt_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `room_num`
---
-ALTER TABLE `room_num`
-  ADD CONSTRAINT `rt_id` FOREIGN KEY (`rt_id`) REFERENCES `room_type` (`rt_id`);
+  MODIFY `rt_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
