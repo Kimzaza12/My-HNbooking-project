@@ -142,7 +142,7 @@ require_once('db.php');
 
 
                     if (!$history) {
-                        echo "<p><td colspan='9' class='text-center'>No data available</td></p>";
+                        echo "<p><td colspan='9' class='text-center'>ไม่มีข้อมูลในระบบ</td></p>";
                     } else {
                         $i = 1;
                         foreach ($history as $ht) {

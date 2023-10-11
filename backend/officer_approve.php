@@ -268,7 +268,7 @@ if (isset($_GET['finish'])) {
                     $book = $stmt->fetchAll();
 
                     if (!$book) {
-                        echo "<p><td colspan='10' class='text-center'>No data available</td></p>";
+                        echo "<p><td colspan='10' class='text-center'>ไม่มีข้อมูลในระบบ</td></p>";
                     } else {
                         $i = 1;
                         foreach ($book as $rbook) {

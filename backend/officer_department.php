@@ -149,7 +149,7 @@ if (isset($_GET['delete'])) {
                     $department = $stmt->fetchAll();
 
                     if (!$department) {
-                        echo "<p><td colspan='3' class='text-center'>No data available</td></p>";
+                        echo "<p><td colspan='3' class='text-center'>ไม่มีข้อมูลในระบบ</td></p>";
                     } else {
                         $i = 1;
                         foreach ($department as $dp) {

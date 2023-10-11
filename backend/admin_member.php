@@ -168,7 +168,7 @@ if (isset($_GET['delete'])) {
                 $member = $stmt->fetchAll();
 
                 if (!$member) {
-                    echo "<p><td colspan='7' class='text-center'>No data available</td></p>";
+                    echo "<p><td colspan='7' class='text-center'>ไม่มีข้อมูลในระบบ</td></p>";
                 } else {
                     $i = 1;
                     foreach ($member as $mem) {

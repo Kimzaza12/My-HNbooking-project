@@ -175,7 +175,7 @@ if (isset($_GET['delete'])) {
                 $roomType = $stmt->fetchAll();
 
                 if (!$roomType) {
-                    echo "<p><td colspan='6' class='text-center'>No data available</td></p>";
+                    echo "<p><td colspan='6' class='text-center'>ไม่มีข้อมูลในระบบ</td></p>";
                 } else {
                     $i = 1;
                     foreach ($roomType as $roomt) {

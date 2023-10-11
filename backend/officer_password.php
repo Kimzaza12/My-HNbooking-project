@@ -12,6 +12,7 @@ if (isset($_SESSION['officer_login'])) {
     // Check if the user's role is 'officer'
     if ($row['m_level'] === 'officer') {
         $m_id = $row['m_id'];
+        $m_username = $row['m_username'];
         $m_password = $row['m_password'];
 
         if (isset($_POST['update_password'])) {
@@ -91,6 +92,10 @@ if (isset($_SESSION['officer_login'])) {
             <?php } ?>
 
             <input type="hidden" readonly value="<?php echo $m_id; ?>" required class="form-control" name="id">
+            <div class="mb-3">
+                <label for="username" class="col-form-label">Username:</label>
+                <input type="text" readonly value="<?php echo $m_username; ?>" required class="form-control" name="username">
+            </div>
             <div class="mb-3 pass-table">
                 <label for="old_password" class="col-form-label">รหัสผ่านเดิม:</label>
                 <div class="pass-cus">

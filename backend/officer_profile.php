@@ -101,10 +101,10 @@ if (isset($_SESSION['officer_login'])) {
                 <label for="lastname" class="col-form-label">นามสกุล:</label>
                 <input type="text" value="<?php echo $m_lastname; ?>" required class="form-control" name="lastname">
             </div>
-            <div class="mb-3">
+           <!-- <div class="mb-3">
                 <label for="username" class="col-form-label">Username:</label>
                 <input type="text" value="<?php echo $m_username; ?>" required class="form-control" name="username">
-            </div>
+            </div>-->
             <div class="mb-3 pass-table">
                 <label for="password" class="col-form-label">Password:</label>
                 <div class="pass-cus">
