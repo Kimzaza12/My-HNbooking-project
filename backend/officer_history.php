@@ -14,7 +14,8 @@ require_once('db.php');
     <title>ประวัติการจอง</title>
 
     <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/indexcss5.css">
 
 
@@ -80,7 +81,7 @@ require_once('db.php');
                     <hr>
                 </div>
 
-                <div class="textsearch">
+                <!-- <div class="textsearch">
                     <div class="col-md-6 text-end">
                         <div class="input-group mb-3 search-container">
                             <input type="text" class="form-control" placeholder="กรุณากรอกข้อความที่ต้องการค้นหา" id="searchInput">
@@ -88,13 +89,10 @@ require_once('db.php');
                         </div>
                     </div>
                 </div>
-
-
+                <script src="JS/searchHistory.js"></script>-->
 
             </div>
 
-
-            <script src="JS/searchHistory.js"></script>
 
             <?php if (isset($_SESSION['success'])) { ?>
                 <div class="alert alert-success">
@@ -113,8 +111,7 @@ require_once('db.php');
                 </div>
             <?php } ?>
 
-            <table class="table table-bordered small-table">
-
+            <table id="myTable" class="table table-bordered small-table">
 
                 <thead>
                     <tr>
@@ -130,12 +127,10 @@ require_once('db.php');
                     </tr>
                 </thead>
 
-
-
                 <tbody>
 
                     <?php
-                    
+
                     $stmt = $conn->query("SELECT * FROM history");
                     $stmt->execute();
                     $history = $stmt->fetchAll();
@@ -181,9 +176,14 @@ require_once('db.php');
             </table>
         </div>
 
-
-        <!-- JavaScript Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#myTable').DataTable();
+            });
+        </script>
 </body>
 
 </html>
